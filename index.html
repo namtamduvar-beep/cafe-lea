@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Léa - Restaurant & Bar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Left Menu Button -->
+    <a href="#hero" class="nav-button menu-btn">Menu</a>
+    
+    <!-- Floating Reservation Button -->
+    <a href="reservation.html" class="nav-button reserve-btn">Réservation</a>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section" style="background-image: url('images/hero.png');">
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title">Café Léa</h1>
+    </header>
+
+    <!-- Navy Info Band -->
+    <section class="info-band">
+        <div class="container">
+            <p>Bienvenue au Café Léa. Une expérience culinaire unique, alliant la tradition française à une touche de modernité. Dégustez nos créations dans un cadre chaleureux et raffiné.</p>
+        </div>
+    </section>
+
+    <!-- Plat du Jour Section -->
+    <section id="plat-du-jour" class="carousel-section">
+        <h2 class="section-title">Le Plat du Jour</h2>
+        <div class="carousel-container" id="carousel-plat">
+            <div class="carousel-track">
+                <div class="carousel-slide" style="background-image: url('images/plat.png')"></div>
+            </div>
+            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
+            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="carousel-section">
+        <h2 class="section-title">Notre Menu</h2>
+        <div class="carousel-container" id="carousel-menu">
+            <div class="carousel-track">
+                <div class="carousel-slide" style="background-image: url('images/menu.png')"></div>
+            </div>
+            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
+            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Boissons Section -->
+    <section id="boissons" class="carousel-section">
+        <h2 class="section-title">Cartes des Boissons</h2>
+        <div class="carousel-container" id="carousel-boissons">
+            <div class="carousel-track">
+                <div class="carousel-slide" style="background-image: url('images/boissons.png')"></div>
+            </div>
+            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
+            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Café Léa. Tous droits réservés.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
