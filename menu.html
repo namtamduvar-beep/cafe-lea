@@ -1,274 +1,490 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Café Léa</title>
-    <meta name="description"
-        content="Découvrez une cuisine d'exception, alliant tradition et fraîcheur pour le plaisir de tous les palais au Café Léa.">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        .menu-section {
-            padding: 8rem 0;
+        body {
+            background-color: #FAF8F5; /* Cream background like in the image */
         }
-
-        .menu-grid {
+        
+        /* Navbar specific for Menu page according to design */
+        #main-header {
+            position: relative;
+            background: transparent;
+            padding: 30px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #main-header .logo {
+            color: var(--navy);
+            font-size: 1.5rem;
+        }
+        #main-header nav ul li a {
+            color: #666;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        #main-header nav ul li a.active {
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .header-actions .nav-btn-order {
+            background: transparent;
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            font-size: 0.8rem;
+            padding: 8px 20px;
+        }
+        .header-actions .nav-btn-order::before {
+            content: "🛒 ";
+        }
+        
+        /* Hero Menu Section */
+        .menu-hero {
+            max-width: 1200px;
+            margin: 4rem auto 8rem;
+            padding: 0 4%;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            align-items: center;
+        }
+        .menu-hero-text .subtitle {
+            color: #C5A880; /* Gold */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .menu-hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-style: italic;
+            font-weight: 600;
+        }
+        .menu-hero-text p {
+            color: #555;
+            font-size: 0.95rem;
+            max-width: 400px;
+            line-height: 1.8;
+        }
+        .menu-hero-image {
+            position: relative;
+        }
+        .menu-hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        .open-hours-badge {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            background: #9A8022; /* Darker Gold / Olive */
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            width: 150px;
+        }
+        .open-hours-badge p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 500;
         }
 
-        .menu-cat {
+        /* Menu Categories Layout */
+        .menu-section-block {
+            max-width: 1000px;
+            margin: 0 auto 6rem;
+            padding: 0 4%;
+        }
+        .menu-section-header {
+            text-align: center;
             margin-bottom: 4rem;
         }
-
-        .menu-cat-title {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #EEE;
-            padding-bottom: 1rem;
+        .menu-section-header .sub {
+            color: #C5A880;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
         }
-
-        .menu-item {
+        .menu-section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--navy);
+            font-style: italic;
+        }
+        
+        /* 2-Column Grid for Items */
+        .items-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem 5rem;
+        }
+        
+        .menu-item-clean {
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-item-clean-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dotted #DDD;
+            border-bottom: 1px dotted #CCC;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .menu-item-clean-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .menu-item-clean-header .price {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .menu-item-clean p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* Add button styled subtly */
+        .btn-add-subtle {
+            align-self: flex-start;
+            background: none;
+            border: none;
+            color: #C5A880;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            transition: var(--transition);
+        }
+        .btn-add-subtle:hover {
+            color: var(--navy);
         }
 
-        .item-info h3 {
-            font-size: 1.3rem;
+        /* Plat du jour highlight block */
+        .plat-du-jour-block {
+            text-align: center;
+            margin: -2rem 0 4rem;
+        }
+        .plat-du-jour-block .sub {
+            color: #C5A880;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .plat-du-jour-box {
+            border: 1px solid #EBEBEB;
+            padding: 2.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .plat-du-jour-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--navy);
             margin-bottom: 0.5rem;
         }
-
-        .item-info p {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .plat-du-jour-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        .plat-p {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
         }
 
-        .item-price {
-            font-family: var(--font-serif);
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--accent-gold);
+        /* Bottom CTA Reservation */
+        .reservation-cta {
+            background: #FDFDFD;
+            max-width: 800px;
+            margin: 6rem auto 4rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: 1px solid #F0F0F0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+        }
+        .reservation-cta .sub {
+            color: #C5A880;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .reservation-cta h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--navy);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .reservation-cta p {
+            font-size: 0.9rem;
+            color: #666;
+            max-width: 400px;
+            margin: 0 auto 2.5rem;
+        }
+        .btn-reserve-dark {
+            background: var(--navy);
+            color: white;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .btn-reserve-dark:hover {
+            background: #C5A880;
+        }
+
+        @media(max-width: 768px) {
+            .menu-hero, .items-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-hero-text h1 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
-
 <body>
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="logo">Café Léa</div>
         <nav>
             <ul>
-                <li><a href="index.html" data-i18n="nav_accueil" class="nav-link">Accueil</a></li>
-                <li><a href="menu.html" class="active nav-link" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+                <li><a href="menu.html" class="active" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="#boissons">Boissons</a></li>
+                <li><a href="reservation.html" data-i18n="nav_reservation">Réservation</a></li>
             </ul>
         </nav>
-        <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
-            <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
+        <div class="header-actions">
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
-            <div class="lang-switcher">
-                <a href="#" class="lang-btn" data-lang="fr">FR</a>
-                <a href="#" class="lang-btn" data-lang="en">EN</a>
-                <a href="#" class="lang-btn" data-lang="es">ES</a>
-                <a href="#" class="lang-btn" data-lang="it">IT</a>
+            <div class="lang-switcher" style="display:inline-block; margin-left:15px;">
+                <a href="#" class="lang-btn" data-lang="fr" style="color:var(--navy);">FR</a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="page-intro"
-            style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/cafe_lea_hero.png'); background-size: cover; background-position: center;">
-            <h1 class="reveal" data-i18n="menu_intro">Une Cuisine d'Exception</h1>
-        </div>
-
-        <section class="menu-section container">
-            <div class="menu-cat reveal">
-                <h2 class="menu-cat-title" data-i18n="cat_entrées">Entrées</h2>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_mer">L’Assiette de la Mer</h3>
-                        <p data-i18n="item_mer_desc">Saumon gravlax, huîtres, crevettes, mayonnaise maison</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>18€</span>
-                        <button class="add-to-cart" data-name="item_mer" data-price="18"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_velouté">Velouté de Saison</h3>
-                        <p data-i18n="item_velouté_desc">Légumes du marché, croûtons à l'ail, filet d'huile de truffe
-                        </p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>12€</span>
-                        <button class="add-to-cart" data-name="item_velouté" data-price="12"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_tartare">Tartare de Bœuf</h3>
-                        <p data-i18n="item_tartare_desc">Coupé au couteau, câpres, échalotes, jaune d'œuf</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>15€</span>
-                        <button class="add-to-cart" data-name="item_tartare" data-price="15"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <section class="menu-hero">
+            <div class="menu-hero-text">
+                <span class="subtitle">LA CARTE DU CAFÉ LÉA</span>
+                <h1>Une Cuisine<br>d'Exception.</h1>
+                <p>Découvrez notre sélection de plats frais et de saison, préparés avec passion chaque jour dans nos cuisines pour le plus grand bonheur de vos papilles.</p>
             </div>
-
-            <div class="menu-cat reveal">
-                <h2 class="menu-cat-title" data-i18n="cat_plats">Plats</h2>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_filet">Filet de Bœuf</h3>
-                        <p data-i18n="item_filet_desc">Sauce au poivre vert, purée de pommes de terre truffée, légumes
-                            glacés</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>28€</span>
-                        <button class="add-to-cart" data-name="item_filet" data-price="28"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_saumon">Pavé de Saumon</h3>
-                        <p data-i18n="item_saumon_desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>24€</span>
-                        <button class="add-to-cart" data-name="item_saumon" data-price="24"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_risotto">Risotto aux Champignons</h3>
-                        <p data-i18n="item_risotto_desc">Crème de cèpes, parmesan affiné, persil plat</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>22€</span>
-                        <button class="add-to-cart" data-name="item_risotto" data-price="22"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-cat reveal">
-                <h2 class="menu-cat-title" data-i18n="cat_desserts">Desserts</h2>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_tatin">Tarte Tatin</h3>
-                        <p data-i18n="item_tatin_desc">Pommes caramélisées, pâte feuilletée, crème fraîche épaisse</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>9€</span>
-                        <button class="add-to-cart" data-name="item_tatin" data-price="9"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_mousse">Mousse au Chocolat</h3>
-                        <p data-i18n="item_mousse_desc">Chocolat noir 70%, éclats de fèves de cacao</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>8€</span>
-                        <button class="add-to-cart" data-name="item_mousse" data-price="8"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-info">
-                        <h3 data-i18n="item_gourmand">Café Gourmand</h3>
-                        <p data-i18n="item_gourmand_desc">Espresso accompagné de trois mignardises du chef</p>
-                    </div>
-                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span>10€</span>
-                        <button class="add-to-cart" data-name="item_gourmand" data-price="10"
-                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
-                            data-i18n="order_btn">Commander</button>
-                    </div>
+            <div class="menu-hero-image">
+                <img src="img/cafe_lea_hero.png" alt="Intérieur du Café Léa">
+                <div class="open-hours-badge">
+                    <p>Ouvert tous les<br>jours de<br>11h à 23h</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <<<<<<< HEAD <footer class="footer">
-        <div class="container">
-            <div style="text-align: center; color: #666; font-size: 0.8rem;">
-                &copy; 2026 Café Léa. Tous droits réservés.
-                =======
-                <footer class="main-footer">
-                    <div class="container footer-content">
-                        <div class="footer-info">
-                            <h3>Nous trouver</h3>
-                            <p>12 Rue de la Gourmandise<br>75000 Paris, France</p>
-                            <p>Tel: +33 1 23 45 67 89</p>
-                        </div>
-                        <div class="footer-social">
-                            <h3>Suivez-nous</h3>
-                            <a href="#">Instagram</a>
-                            <a href="#">Facebook</a>
-                        </div>
-                        <div class="footer-map placeholder-map">
-                            <div class="map-pin">📍 Paris, France</div>
-                            >>>>>>> e6ed97c (Initial Next.js setup)
-                        </div>
-                    </div>
-                </footer>
-
-                <<<<<<< HEAD <div id="cart-floating" class="cart-floating">
-                    <div class="cart-count" id="cart-count">0</div>
-                    <div>
-                        <span data-i18n="cart_summary">Votre commande : </span>
-                        <span class="cart-total" id="cart-total">0.00€</span>
-                    </div>
-                    <a href="#" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;"
-                        data-i18n="cart_pay">Payer</a>
+        <!-- Entrées -->
+        <section class="menu-section-block">
+            <div class="menu-section-header">
+                <span class="sub">NOS ENTRÉES</span>
+                <h2>Les Entrées</h2>
             </div>
+            <div class="items-grid">
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Soupe à l'oignon</h3>
+                        <span class="price">14.-</span>
+                    </div>
+                    <p>Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="soupe_oignon" data-price="14">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Escargots de Bourgogne</h3>
+                        <span class="price">12.-</span>
+                    </div>
+                    <p>Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="escargots" data-price="12">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Foie Gras Maison</h3>
+                        <span class="price">21.-</span>
+                    </div>
+                    <p>Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="foie_gras" data-price="21">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Oeufs Mayonnaise</h3>
+                        <span class="price">9.-</span>
+                    </div>
+                    <p>Les œufs durs traditionnels et notre mayonnaise secrète.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="oeufs_mayo" data-price="9">+ Ajouter</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- Cart Modal -->
-            <div id="cart-modal-overlay" class="cart-modal-overlay">
-                <div class="cart-modal">
-                    <div class="cart-modal-header">
-                        <h2 data-i18n="cart_title">Ma Commande</h2>
-                        <button class="close-cart" id="close-cart-btn">&times;</button>
-                    </div>
-                    <div id="cart-items-list" class="cart-items-list">
-                        <!-- Items will be injected here -->
-                    </div>
-                    <div class="cart-modal-footer">
-                        <div class="cart-modal-total">
-                            <span data-i18n="total_label">Total</span>
-                            <span id="modal-total">0.00€</span>
-                        </div>
-                        <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
-                    </div>
+        <!-- Plats -->
+        <section class="menu-section-block">
+            <div class="menu-section-header">
+                <span class="sub">NOS PLATS</span>
+                <h2>Les Plats</h2>
+            </div>
+            
+            <div class="plat-du-jour-block">
+                <span class="sub">LE PLAT DU JOUR EN TOUTE LÉGÈRETÉ</span>
+                <div class="plat-du-jour-box">
+                    <h3 class="plat-du-jour-title">Lieu Jaune sauce passion</h3>
+                    <span class="plat-p">24.-</span>
+                    <p class="plat-du-jour-desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="lieu_jaune" data-price="24">+ Ajouter</button>
                 </div>
             </div>
 
-            =======
-            >>>>>>> e6ed97c (Initial Next.js setup)
-            <script src="script.js"></script>
-</body>
+            <div class="items-grid">
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Entrecôte Marchand de Vin</h3>
+                        <span class="price">32.-</span>
+                    </div>
+                    <p>300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="entrecote" data-price="32">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Magret de Canard</h3>
+                        <span class="price">28.-</span>
+                    </div>
+                    <p>Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="magret" data-price="28">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Pavé de Saumon</h3>
+                        <span class="price">24.-</span>
+                    </div>
+                    <p>Rôti sur le feuillet de poireaux, beurre blanc citronné, câpres et riz.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="saumon_pave" data-price="24">+ Ajouter</button>
+                </div>
+            </div>
+        </section>
 
+        <!-- Desserts -->
+        <section class="menu-section-block">
+            <div class="menu-section-header">
+                <span class="sub">NOS DOUCEURS</span>
+                <h2>Les Desserts</h2>
+            </div>
+            <div class="items-grid">
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Crème Brûlée à la Vanille</h3>
+                        <span class="price">9.-</span>
+                    </div>
+                    <p>La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="creme_brulee" data-price="9">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Tarte Tatin de la Mère</h3>
+                        <span class="price">11.-</span>
+                    </div>
+                    <p>Pommes fondantes et très caramélisées dans le moule, crème fraiche épaisse.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="tarte_tatin" data-price="11">+ Ajouter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Boissons -->
+        <section class="menu-section-block" id="boissons">
+            <div class="menu-section-header">
+                <span class="sub">POUR ACCOMPAGNER</span>
+                <h2>Les Boissons</h2>
+            </div>
+            <div class="items-grid">
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Negroni Signature</h3>
+                        <span class="price">14.-</span>
+                    </div>
+                    <p>Gin artisanal, Campari, Vermouth Rouge et une tranche d'orange séchée.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="negroni" data-price="14">+ Ajouter</button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3>Saint-Estèphe (Verre/Bouteille)</h3>
+                        <span class="price">9.- / 45.-</span>
+                    </div>
+                    <p>Vin de Bordeaux, riche et épicé avec des tanins doux. Un délice.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="vin_verre" data-price="9">+ Ajouter Verre</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA Reservation -->
+        <section class="reservation-cta">
+            <span class="sub">RÉSERVEZ UNE TABLE</span>
+            <h2>Réservez votre moment<br>d'exception au Café Léa</h2>
+            <p>Assurez-vous d'avoir la meilleure place pour votre repas en famille ou avec des amis.</p>
+            <a href="reservation.html" class="btn-reserve-dark">RÉSERVER UNE TABLE</a>
+        </section>
+    </main>
+
+    <footer style="text-align:center; padding: 2rem; color: #999; font-size: 0.8rem; background: transparent; border-top: 1px solid #EBEBEB; margin-top: 4rem;">
+        &copy; 2026 Café Léa. Tous droits réservés.
+    </footer>
+
+    <!-- Cart Sticky Bar that will be populated by script.js globally if cart not empty -->
+    <div class="cart-sticky-bar" id="cart-sticky-bar">
+        <div class="cart-bar-left">
+            <span class="cart-bar-total" id="sticky-total">0,00€</span>
+            <span class="cart-bar-count">
+                <span class="icon">🛒</span>
+                <span id="sticky-count">0</span> Articles
+            </span>
+        </div>
+        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link">FINALISER LA COMMANDE</a>
+    </div>
+
+    <!-- Minimal script to trigger add to cart visually and update globally handled by script.js -->
+    <script src="script.js"></script>
+</body>
 </html>
