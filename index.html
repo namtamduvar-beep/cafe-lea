@@ -147,52 +147,42 @@
                 </div>
             </div>
         </section>
-    </main>    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>Nous trouver</h3>
-                <p>12 Rue de la Gourmandise, 75000 Paris</p>
-                <p>Ouvert tous les jours de 11h à 23h</p>
-            </div>
-            <!-- Map placeholder -->
-            <div class="footer-map">
-                <div class="map-placeholder">Plan Interactif</div>
-                <footer class="footer">
-                    <div class="container">
-                        <div class="footer-grid">
-                            <div class="footer-col reveal">
-                                <h4>Restaurant</h4>
-                                <p>Café Léa</p>
-                                <p>Restauration &<br>Salon de thé</p>
-                            </div>
-                            <div class="footer-col reveal">
-                                <h4>Nous trouver</h4>
-                                <p>12 Rue de la Gourmandise</p>
-                                <p>75000 Paris, France</p>
-                                <p>+33 1 23 45 67 89</p>
-                            </div>
-                            <div class="footer-col reveal">
-                                <h4>Suivez-nous</h4>
-                                <a href="#">Instagram</a>
-                                <a href="#">Facebook</a>
-                                <a href="#">Twitter</a>
-                            </div>
-                            <div class="footer-col reveal">
-                                <div class="footer-map">
-                                    <span
-                                        style="font-family: var(--font-serif); color: var(--accent-gold); font-size: 1.2rem;">📍
-                                        Paris, France</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: #666; font-size: 0.8rem;"
-                            data-i18n="footer_rights">
-                            &copy; 2026 Café Léa. Tous droits réservés.
+    </main>
 
-                        </div>
+    <footer class="footer">
+        <div class="footer-content" style="padding: 4rem 2rem 2rem;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-col reveal">
+                    <div class="footer-info">
+                        <h3 data-i18n="find_us" style="color: var(--accent-gold); margin-bottom: 1.5rem;">Nous trouver</h3>
+                        <p data-i18n="info_address" style="font-size: 1.1rem; margin-bottom: 0.5rem;">1 Rue Claude Bernard, 75005 Paris</p>
+                        <p style="opacity: 0.8;">Ouvert tous les jours de 11h à 23h</p>
+                        <p style="opacity: 0.8; margin-top: 1rem;">+33 1 23 45 67 89</p>
                     </div>
-                    <p class="copyright">&copy; 2026 Café Léa. Tous droits réservés.</p>
-                </footer>
+                </div>
+                
+                <div class="footer-col reveal">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem;">Accès</h3>
+                    <div class="footer-map" style="border-radius: 12px; overflow: hidden; height: 200px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <img src="images/map.png" alt="Plan d'accès" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="footer-col reveal">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem;">Suivez-nous</h3>
+                    <div style="display: flex; gap: 1.5rem; font-size: 1.2rem;">
+                        <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Instagram</a>
+                        <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Facebook</a>
+                        <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.9rem;" data-i18n="footer_rights">
+                &copy; 2026 Café Léa. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
 
                 <script src="app.js">
                 </script>

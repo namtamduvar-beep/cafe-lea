@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             info_mon_fri: "Lun - Ven : 08:00 - 22:00",
             info_sat_sun: "Sam - Dim : 09:00 - 23:00",
             info_address_title: "Adresse",
-            info_address: "123 Rue de la Paix, 75002 Paris"
+            info_address: "1 Rue Claude Bernard, 75005 Paris"
         },
         en: {
             nav_accueil: "Home",
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             info_mon_fri: "Mon - Fri: 08:00 - 22:00",
             info_sat_sun: "Sat - Sun: 09:00 - 23:00",
             info_address_title: "Address",
-            info_address: "123 Rue de la Paix, 75002 Paris"
+            info_address: "1 Rue Claude Bernard, 75005 Paris"
         },
         es: {
             nav_accueil: "Inicio",
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             info_mon_fri: "Lun - Vie: 08:00 - 22:00",
             info_sat_sun: "Sáb - Dom: 09:00 - 23:00",
             info_address_title: "Dirección",
-            info_address: "123 Rue de la Paix, 75002 Paris"
+            info_address: "1 Rue Claude Bernard, 75005 Paris"
         },
         it: {
             nav_accueil: "Home",
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             info_mon_fri: "Lun - Ven: 08:00 - 22:00",
             info_sat_sun: "Sab - Dom: 09:00 - 23:00",
             info_address_title: "Indirizzo",
-            info_address: "123 Rue de la Paix, 75002 Paris"
+            info_address: "1 Rue Claude Bernard, 75005 Paris"
         }
     };
 
