@@ -61,10 +61,24 @@ const translations = {
         reviews_leave: "Laissez votre avis",
         reviews_name: "Votre nom",
         reviews_comment: "Votre commentaire",
-        reviews_submit: "Envoyer l'avis"
+        reviews_submit: "Envoyer l'avis",
+        // New items for sync
+        item_soupe_title: "Soupe à l'Oignon",
+        item_escargots_title: "Escargots de Bourgogne",
+        item_foie_title: "Foie Gras Maison",
+        item_oeufs_title: "Oeufs Mayonnaise",
+        item_lieu_title: "Lieu Jaune sauce passion",
+        item_entrecote_title: "Entrecôte Marchand de Vin",
+        item_magret_title: "Magret de Canard",
+        item_saumon_pave_title: "Pavé de Saumon",
+        item_creme_title: "Crème Brûlée à la Vanille",
+        item_tatin_title: "Tarte Tatin de la Mère",
+        item_negroni_title: "Negroni Signature",
+        item_vin_title: "Saint-Estèphe (Verre)"
     },
     en: {
         nav_accueil: "Home",
+
         nav_menu: "Menu",
         nav_reservation: "Reservation",
         nav_order: "ORDER",
@@ -125,7 +139,19 @@ const translations = {
         reviews_leave: "Leave a review",
         reviews_name: "Your name",
         reviews_comment: "Your comment",
-        reviews_submit: "Submit review"
+        reviews_submit: "Submit review",
+        item_soupe_title: "French Onion Soup",
+        item_escargots_title: "Burgundy Escargots",
+        item_foie_title: "Homemade Foie Gras",
+        item_oeufs_title: "Eggs Mayonnaise",
+        item_lieu_title: "Yellow Pollack passion sauce",
+        item_entrecote_title: "Entrecôte Marchand de Vin",
+        item_magret_title: "Duck Magret",
+        item_saumon_pave_title: "Salmon Fillet",
+        item_creme_title: "Vanilla Crème Brûlée",
+        item_tatin_title: "Mother's Tarte Tatin",
+        item_negroni_title: "Signature Negroni",
+        item_vin_title: "Saint-Estèphe (Glass)"
     },
     es: {
         nav_accueil: "Inicio",
@@ -189,7 +215,19 @@ const translations = {
         reviews_leave: "Deja tu opinión",
         reviews_name: "Tu nombre",
         reviews_comment: "Tu comentario",
-        reviews_submit: "Enviar opinión"
+        reviews_submit: "Enviar opinión",
+        item_soupe_title: "Sopa de Cebolla",
+        item_escargots_title: "Caracoles de Borgoña",
+        item_foie_title: "Foie Gras Casero",
+        item_oeufs_title: "Huevos Mayonesa",
+        item_lieu_title: "Abadejo salsa pasión",
+        item_entrecote_title: "Chuletón Marchand de Vin",
+        item_magret_title: "Magret de Pato",
+        item_saumon_pave_title: "Lomo de Salmón",
+        item_creme_title: "Crème Brûlée de Vainilla",
+        item_tatin_title: "Tarta Tatin de la Madre",
+        item_negroni_title: "Negroni de Autor",
+        item_vin_title: "Saint-Estèphe (Copa)"
     },
     it: {
         nav_accueil: "Home",
@@ -253,7 +291,19 @@ const translations = {
         reviews_leave: "Lascia una recensione",
         reviews_name: "Il tuo nome",
         reviews_comment: "Il tuo commento",
-        reviews_submit: "Invia recensione"
+        reviews_submit: "Invia recensione",
+        item_soupe_title: "Zuppa di Cipolle",
+        item_escargots_title: "Lumache di Borgogna",
+        item_foie_title: "Foie Gras della Casa",
+        item_oeufs_title: "Uova al Mayonnaise",
+        item_lieu_title: "Merluzzo salsa passione",
+        item_entrecote_title: "Entrecôte Marchand de Vin",
+        item_magret_title: "Magret di Anatra",
+        item_saumon_pave_title: "Trancio di Salmone",
+        item_creme_title: "Crème Brûlée alla Vaniglia",
+        item_tatin_title: "Tarte Tatin della Madre",
+        item_negroni_title: "Negroni d'Autore",
+        item_vin_title: "Saint-Estèphe (Calice)"
     }
 };
 
