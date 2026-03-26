@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commander | Café Léa</title>
-    <meta name="description" content="Commandez vos plats préférés du Café Léa en ligne.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #FAF8F5; /* Cream background matches menu */
+            background-color: #FAF8F5; /* Cream background matching menu */
+            padding-bottom: 100px;
         }
         
         #main-header {
@@ -60,28 +60,22 @@
             border: 1px solid var(--navy);
             font-size: 0.8rem;
             padding: 8px 20px;
-            border-radius: 30px;
+            background: transparent;
             text-decoration: none;
-            font-weight: 600;
-        }
-        .header-actions .nav-btn-order {
-            background: #C5A880;
-            color: white;
-            border: 1px solid #C5A880;
-            font-size: 0.8rem;
-            padding: 8px 20px;
             border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
-
+        
         .order-page-header {
-            padding: 4rem 0 2rem;
             text-align: center;
+            max-width: 800px;
+            margin: 4rem auto 3rem;
+            padding: 0 4%;
         }
         .order-page-header .subtitle {
-            color: #C5A880; /* Gold */
+            color: #C5A880;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.75rem;
@@ -94,59 +88,50 @@
             font-size: 3.5rem;
             color: var(--navy);
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         .order-page-header p {
             color: #666;
-            font-size: 0.95rem;
-            max-width: 500px;
-            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.05rem;
         }
-        
+
         .order-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 4% 8rem;
+            padding: 0 4%;
         }
-        
+
         .order-category {
             margin-bottom: 5rem;
         }
         .order-category h2 {
             font-family: var(--font-heading);
             font-size: 2.2rem;
-            margin-bottom: 2rem;
             color: var(--navy);
-            border-bottom: 1px dotted #ccc;
+            border-bottom: 1px solid #EBEBEB;
             padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
         }
-        
+
         .order-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
         }
-        
         .order-card {
             background: #FFF;
-            border: 1px solid #EBEBEB;
-            border-radius: 4px;
-            position: relative;
+            border: 1px solid #F0F0F0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
         }
-        .order-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            transform: translateY(-5px);
-            border-color: #C5A880;
-        }
-        
-        /* Instead of big images, we'll make it elegant and focus on the typography like the menu */
         .order-card-content {
             padding: 2rem;
-            flex-grow: 1;
             display: flex;
+            flex-grow: 1;
             flex-direction: column;
         }
         .order-card-header {
@@ -276,37 +261,40 @@
             <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
             <div class="lang-switcher">
-                <a href="#" class="lang-btn" data-lang="fr" style="color:var(--navy);">FR</a>
+                <a href="#" class="lang-btn" data-lang="fr">FR</a>
+                <a href="#" class="lang-btn" data-lang="en">EN</a>
+                <a href="#" class="lang-btn" data-lang="es">ES</a>
+                <a href="#" class="lang-btn" data-lang="it">IT</a>
             </div>
         </div>
     </header>
 
     <main>
         <div class="order-page-header">
-             <span class="subtitle">FAITES VOTRE CHOIX</span>
-            <h1>Passez commande</h1>
-            <p>Sélectionnez vos plats et boissons pour une dégustation chez vous ou à emporter.</p>
+             <span class="subtitle" data-i18n="order_page_subtitle">FAITES VOTRE CHOIX</span>
+            <h1 data-i18n="commander_hero_title">Passez commande</h1>
+            <p data-i18n="commander_hero_desc">Sélectionnez vos plats et boissons pour une dégustation chez vous ou à emporter.</p>
         </div>
 
         <div class="order-container">
             <!-- Entrées -->
             <div class="order-category">
-                <h2>Les Entrées</h2>
+                <h2 data-i18n="cat_entrées">Les Entrées</h2>
                 <div class="order-grid">
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Soupe à l'Oignon</span>
+                                <span class="order-card-title" data-i18n="item_soupe_title">Soupe à l'Oignon</span>
                                 <span class="order-card-price">14.-</span>
                             </div>
-                            <p class="order-card-desc">Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
+                            <p class="order-card-desc" data-i18n="item_soupe_desc">Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="soupe_oignon">−</button>
                                     <span class="qty-display" id="qty-soupe_oignon">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="soupe_oignon">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="soupe_oignon" data-price="14">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="soupe_oignon" data-price="14"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -314,17 +302,17 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Escargots de Bourgogne</span>
+                                <span class="order-card-title" data-i18n="item_escargots_title">Escargots de Bourgogne</span>
                                 <span class="order-card-price">12.-</span>
                             </div>
-                            <p class="order-card-desc">Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
+                            <p class="order-card-desc" data-i18n="item_escargots_desc">Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="escargots">−</button>
                                     <span class="qty-display" id="qty-escargots">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="escargots">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="escargots" data-price="12">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="escargots" data-price="12"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -332,17 +320,17 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Foie Gras Maison</span>
+                                <span class="order-card-title" data-i18n="item_foie_title">Foie Gras Maison</span>
                                 <span class="order-card-price">21.-</span>
                             </div>
-                            <p class="order-card-desc">Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
+                            <p class="order-card-desc" data-i18n="item_foie_desc">Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="foie_gras">−</button>
                                     <span class="qty-display" id="qty-foie_gras">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="foie_gras">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="foie_gras" data-price="21">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="foie_gras" data-price="21"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -350,17 +338,17 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Oeufs Mayonnaise</span>
-                                <span class="order-card-price">9.-</span>
+                                <span class="order-card-title" data-i18n="item_oeufs_title">Oeufs Mayonnaise</span>
+                                <span class="order-card-price">8.-</span>
                             </div>
-                            <p class="order-card-desc">Les œufs durs traditionnels et notre mayonnaise secrète.</p>
+                            <p class="order-card-desc" data-i18n="item_oeufs_desc">Les œufs durs traditionnels et notre mayonnaise secrète.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="oeufs_mayo">−</button>
                                     <span class="qty-display" id="qty-oeufs_mayo">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="oeufs_mayo">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="oeufs_mayo" data-price="9">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="oeufs_mayo" data-price="8"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -369,24 +357,24 @@
 
             <!-- Plats -->
             <div class="order-category">
-                <h2>Les Plats</h2>
+                <h2 data-i18n="cat_plats">Les Plats</h2>
                 <div class="order-grid">
                     
-                    <div class="order-card" style="border: 2px solid #C5A880;">
-                        <span style="position:absolute; top:-12px; left:20px; background:#C5A880; color:white; font-size:0.6rem; text-transform:uppercase; padding:3px 10px; letter-spacing:1px; border-radius:2px;">Plat du jour</span>
+                    <div class="order-card" style="border: 1px solid #C5A880; position:relative;">
+                        <span style="position:absolute; top:-12px; left:20px; background:#C5A880; color:white; font-size:0.6rem; text-transform:uppercase; padding:3px 10px; letter-spacing:1px; border-radius:2px;" data-i18n="plat_du_jour_badge">Plat du jour</span>
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Lieu Jaune sauce passion</span>
+                                <span class="order-card-title" data-i18n="item_lieu_title">Lieu Jaune sauce passion</span>
                                 <span class="order-card-price">24.-</span>
                             </div>
-                            <p class="order-card-desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
+                            <p class="order-card-desc" data-i18n="item_lieu_desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="lieu_jaune">−</button>
                                     <span class="qty-display" id="qty-lieu_jaune">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="lieu_jaune">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="lieu_jaune" data-price="24">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="lieu_jaune" data-price="24"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -394,17 +382,17 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Entrecôte Marchand de Vin</span>
+                                <span class="order-card-title" data-i18n="item_entrecote_title">Entrecôte Marchand de Vin</span>
                                 <span class="order-card-price">32.-</span>
                             </div>
-                            <p class="order-card-desc">300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
+                            <p class="order-card-desc" data-i18n="item_entrecote_desc">300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="entrecote">−</button>
                                     <span class="qty-display" id="qty-entrecote">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="entrecote">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="entrecote" data-price="32">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="entrecote" data-price="32"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -412,35 +400,35 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Magret de Canard</span>
+                                <span class="order-card-title" data-i18n="item_magret_title">Magret de Canard</span>
                                 <span class="order-card-price">28.-</span>
                             </div>
-                            <p class="order-card-desc">Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
+                            <p class="order-card-desc" data-i18n="item_magret_desc">Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
-                                    <button class="qty-btn-menu" data-action="minus" data-item="magret">−</button>
-                                    <span class="qty-display" id="qty-magret">0</span>
-                                    <button class="qty-btn-menu" data-action="plus" data-item="magret">+</button>
+                                    <button class="qty-btn-menu" data-action="minus" data-item="magret_canard">−</button>
+                                    <span class="qty-display" id="qty-magret_canard">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="magret_canard">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="magret" data-price="28">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="magret_canard" data-price="28"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Pavé de Saumon</span>
+                                <span class="order-card-title" data-i18n="item_saumon_pave_title">Pavé de Saumon</span>
                                 <span class="order-card-price">24.-</span>
                             </div>
-                            <p class="order-card-desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné.</p>
+                            <p class="order-card-desc" data-i18n="item_saumon_pave_desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="saumon_pave">−</button>
                                     <span class="qty-display" id="qty-saumon_pave">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="saumon_pave">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="saumon_pave" data-price="24">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="saumon_pave" data-price="24"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -449,22 +437,22 @@
 
             <!-- Desserts -->
             <div class="order-category">
-                <h2>Les Desserts</h2>
+                <h2 data-i18n="cat_desserts">Les Desserts</h2>
                 <div class="order-grid">
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Crème Brûlée à la Vanille</span>
+                                <span class="order-card-title" data-i18n="item_creme_title">Crème Brûlée à la Vanille</span>
                                 <span class="order-card-price">9.-</span>
                             </div>
-                            <p class="order-card-desc">La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
+                            <p class="order-card-desc" data-i18n="item_creme_desc">La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="creme_brulee">−</button>
                                     <span class="qty-display" id="qty-creme_brulee">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="creme_brulee">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="creme_brulee" data-price="9">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="creme_brulee" data-price="9"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -472,17 +460,17 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Tarte Tatin de la Mère</span>
-                                <span class="order-card-price">11.-</span>
+                                <span class="order-card-title" data-i18n="item_tatin_title">Tarte Tatin de la Mère</span>
+                                <span class="order-card-price">10.-</span>
                             </div>
-                            <p class="order-card-desc">Pommes fondantes et très caramélisées, crème fraiche épaisse.</p>
+                            <p class="order-card-desc" data-i18n="item_tatin_desc">Pommes fondantes et très caramélisées, crème fraiche épaisse.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="tarte_tatin">−</button>
                                     <span class="qty-display" id="qty-tarte_tatin">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="tarte_tatin">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="tarte_tatin" data-price="11">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="tarte_tatin" data-price="10"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -491,22 +479,22 @@
 
             <!-- Boissons -->
             <div class="order-category">
-                <h2>Les Boissons</h2>
+                <h2 data-i18n="drinks_title">Les Boissons</h2>
                 <div class="order-grid">
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Negroni Signature</span>
-                                <span class="order-card-price">14.-</span>
+                                <span class="order-card-title" data-i18n="item_negroni_title">Negroni Signature</span>
+                                <span class="order-card-price">12.-</span>
                             </div>
-                            <p class="order-card-desc">Gin artisanal, Campari, Vermouth Rouge et tranche d'orange séchée.</p>
+                            <p class="order-card-desc" data-i18n="item_negroni_desc">Gin artisanal, Campari, Vermouth Rouge et tranche d'orange séchée.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="negroni">−</button>
                                     <span class="qty-display" id="qty-negroni">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="negroni">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="negroni" data-price="14">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="negroni" data-price="12"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
@@ -514,41 +502,163 @@
                     <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Saint-Estèphe (Verre)</span>
+                                <span class="order-card-title" data-i18n="item_vin_title">Saint-Estèphe (Verre)</span>
                                 <span class="order-card-price">9.-</span>
                             </div>
-                            <p class="order-card-desc">Vin rouge de Bordeaux, riche et épicé avec des tanins doux.</p>
+                            <p class="order-card-desc" data-i18n="item_vin_desc">Vin rouge de Bordeaux, riche et épicé avec des tanins doux.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="vin_verre">−</button>
                                     <span class="qty-display" id="qty-vin_verre">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="vin_verre">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="vin_verre" data-price="9">+ AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="vin_verre" data-price="9"><span data-i18n="add_to_cart_btn_upper">+ AJOUTER</span></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </main>
 
     <!-- Sticky Cart Bar -->
-    <div class="cart-sticky-bar" id="cart-sticky-bar">
-        <div class="cart-bar-left">
-            <span class="cart-bar-total" id="sticky-total">0,00€</span>
-            <span class="cart-bar-count">
-                <span class="icon">🛒</span>
-                <span id="sticky-count">0</span> Articles
-            </span>
+    <div class="cart-sticky-bar" id="cart-bar">
+        <div>
+            <span style="font-size: 0.9rem; opacity: 0.8;" data-i18n="cart_summary">Votre commande :</span>
+            <div style="font-size: 1.2rem; font-weight: 600; margin-top: 4px;" id="cart-total-display">0 €</div>
         </div>
-        <!-- Link to Finalisation page -->
-        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link">FINALISER LA COMMANDE</a>
+        <a href="finaliser-commande.html" class="btn-finaliser">FINALISER LA COMMANDE</a>
     </div>
 
-    <!-- Cart Modal Overlay (used mostly on other pages, but included here for script compatibility) -->
-    <div id="cart-modal-overlay" class="cart-modal-overlay"></div>
+    <footer style="text-align: center; padding: 40px; color: #999; font-size: 0.9rem;">
+        <p data-i18n="footer_rights">© 2026 Café Léa. Tous droits réservés.</p>
+    </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script type="module">
+        import translations from './translations.js';
+
+        // Cart Logic
+        let cart = JSON.parse(localStorage.getItem('lea_cart')) || [];
+        
+        function updateCartStorage() {
+            localStorage.setItem('lea_cart', JSON.stringify(cart));
+            renderCartUI();
+        }
+
+        function calculateTotal() {
+            return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        }
+
+        function renderCartUI() {
+            // Update individual displays
+            document.querySelectorAll('.qty-display').forEach(el => {
+                const id = el.id.replace('qty-', '');
+                const inCart = cart.find(c => c.id === id);
+                el.innerText = inCart ? inCart.qty : '0';
+            });
+
+            // Update sticky bar
+            const total = calculateTotal();
+            const bar = document.getElementById('cart-bar');
+            if(total > 0) {
+                bar.classList.add('visible');
+                document.getElementById('cart-total-display').innerText = total + '.-';
+            } else {
+                bar.classList.remove('visible');
+            }
+        }
+
+        // Qty controls logic
+        document.querySelectorAll('.qty-btn-menu').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const action = e.currentTarget.dataset.action;
+                const id = e.currentTarget.dataset.item;
+                const price = parseFloat(document.querySelector(`button.add-to-cart[data-name="${id}"]`).dataset.price);
+
+                let existing = cart.find(c => c.id === id);
+
+                if (action === 'plus') {
+                    if (existing) {
+                        existing.qty += 1;
+                    } else {
+                        cart.push({ id, qty: 1, price });
+                    }
+                } else if (action === 'minus') {
+                    if (existing && existing.qty > 0) {
+                        existing.qty -= 1;
+                        if (existing.qty === 0) {
+                            cart = cart.filter(c => c.id !== id);
+                        }
+                    }
+                }
+                updateCartStorage();
+            });
+        });
+
+        // Add to cart main button logic
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.currentTarget.dataset.name;
+                const price = parseFloat(e.currentTarget.dataset.price);
+                
+                let existing = cart.find(c => c.id === id);
+                if (existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({ id, qty: 1, price });
+                }
+                updateCartStorage();
+
+                /* Visual feedback */
+                const originalText = e.currentTarget.innerHTML;
+                e.currentTarget.innerHTML = '<span style="color:var(--navy)">Ajouté ✓</span>';
+                setTimeout(() => {
+                    e.currentTarget.innerHTML = originalText;
+                }, 1000);
+            });
+        });
+
+        // Initialize UI
+        renderCartUI();
+
+        // Language Switcher
+        const languageSwitcher = () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            function setLang(lang) {
+                langBtns.forEach(b => { b.style.color = '#666'; b.style.fontWeight = '500'; });
+                
+                const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+                if(activeBtn) {
+                    activeBtn.style.color = 'var(--navy)';
+                    activeBtn.style.fontWeight = '700';
+                }
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.placeholder = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+            }
+
+            setLang('fr');
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLang(e.target.dataset.lang);
+                });
+            });
+        };
+        languageSwitcher();
+    </script>
 </body>
 </html>

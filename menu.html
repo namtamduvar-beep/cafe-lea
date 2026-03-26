@@ -274,35 +274,28 @@
             margin-bottom: 1rem;
         }
         .reservation-cta p {
-            font-size: 0.9rem;
             color: #666;
+            margin-bottom: 2rem;
             max-width: 400px;
-            margin: 0 auto 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .btn-reserve-dark {
+        .btn-reserve {
+            display: inline-block;
             background: var(--navy);
             color: white;
-            padding: 1rem 3rem;
             text-decoration: none;
+            padding: 12px 30px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
             font-weight: 600;
-            display: inline-block;
-            transition: var(--transition);
+            transition: background 0.3s;
         }
-        .btn-reserve-dark:hover {
-            background: #C5A880;
+        .btn-reserve:hover {
+            background: #111;
         }
 
-        @media(max-width: 768px) {
-            .menu-hero, .items-grid {
-                grid-template-columns: 1fr;
-            }
-            .menu-hero-text h1 {
-                font-size: 3rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -311,200 +304,268 @@
         <nav>
             <ul>
                 <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
-                <li><a href="menu.html" class="active" data-i18n="nav_menu">Menu</a></li>
-                <li><a href="#boissons">Boissons</a></li>
-                <li><a href="reservation.html" data-i18n="nav_reservation">Réservation</a></li>
+                <li><a href="menu.html" data-i18n="nav_menu" class="active">Menu</a></li>
             </ul>
         </nav>
-        <div class="header-actions">
+        <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
+            <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
-            <div class="lang-switcher" style="display:inline-block; margin-left:15px;">
-                <a href="#" class="lang-btn" data-lang="fr" style="color:var(--navy);">FR</a>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn" data-lang="fr">FR</a>
+                <a href="#" class="lang-btn" data-lang="en">EN</a>
+                <a href="#" class="lang-btn" data-lang="es">ES</a>
+                <a href="#" class="lang-btn" data-lang="it">IT</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Menu -->
         <section class="menu-hero">
             <div class="menu-hero-text">
-                <span class="subtitle">LA CARTE DU CAFÉ LÉA</span>
-                <h1>Une Cuisine<br>d'Exception.</h1>
-                <p>Découvrez notre sélection de plats frais et de saison, préparés avec passion chaque jour dans nos cuisines pour le plus grand bonheur de vos papilles.</p>
+                <span class="subtitle" data-i18n="menu_hero_subtitle">LA CARTE DU CAFÉ LÉA</span>
+                <h1>Menu</h1>
+                <p data-i18n="menu_hero_desc">Découvrez notre sélection de plats frais et de saison, préparés avec passion chaque jour dans nos cuisines pour le plus grand bonheur de vos papilles.</p>
             </div>
             <div class="menu-hero-image">
-                <img src="img/cafe_lea_hero.png" alt="Intérieur du Café Léa">
+                <img src="images/hero.png" alt="Plats Café Léa">
                 <div class="open-hours-badge">
-                    <p>Ouvert tous les<br>jours de<br>11h à 23h</p>
+                    <p data-i18n="menu_hero_badge">Ouvert tous les<br>jours de<br>11h à 23h</p>
                 </div>
             </div>
         </section>
 
-        <!-- Entrées -->
+        <!-- Section: Entrées & Plats -->
         <section class="menu-section-block">
             <div class="menu-section-header">
-                <span class="sub">NOS ENTRÉES</span>
-                <h2>Les Entrées</h2>
-            </div>
-            <div class="items-grid">
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Soupe à l'oignon</h3>
-                        <span class="price">14.-</span>
-                    </div>
-                    <p>Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="soupe_oignon" data-price="14">+ Ajouter</button>
-                </div>
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Escargots de Bourgogne</h3>
-                        <span class="price">12.-</span>
-                    </div>
-                    <p>Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="escargots" data-price="12">+ Ajouter</button>
-                </div>
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Foie Gras Maison</h3>
-                        <span class="price">21.-</span>
-                    </div>
-                    <p>Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="foie_gras" data-price="21">+ Ajouter</button>
-                </div>
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Oeufs Mayonnaise</h3>
-                        <span class="price">9.-</span>
-                    </div>
-                    <p>Les œufs durs traditionnels et notre mayonnaise secrète.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="oeufs_mayo" data-price="9">+ Ajouter</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Plats -->
-        <section class="menu-section-block">
-            <div class="menu-section-header">
-                <span class="sub">NOS PLATS</span>
-                <h2>Les Plats</h2>
+                <span class="sub" data-i18n="cat_entrées">Les Entrées</span>
+                <h2>Commencer en Douceur</h2>
             </div>
             
-            <div class="plat-du-jour-block">
-                <span class="sub">LE PLAT DU JOUR EN TOUTE LÉGÈRETÉ</span>
-                <div class="plat-du-jour-box">
-                    <h3 class="plat-du-jour-title">Lieu Jaune sauce passion</h3>
-                    <span class="plat-p">24.-</span>
-                    <p class="plat-du-jour-desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="lieu_jaune" data-price="24">+ Ajouter</button>
+            <div class="items-grid">
+                <!-- Entrée 1 -->
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_soupe_title">Soupe à l'Oignon</h3>
+                        <span class="price">14 €</span>
+                    </div>
+                    <p data-i18n="item_soupe_desc">Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="soupe_oignon" data-price="14"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+                </div>
+                <!-- Entrée 2 -->
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_escargots_title">Escargots de Bourgogne</h3>
+                        <span class="price">12 €</span>
+                    </div>
+                    <p data-i18n="item_escargots_desc">Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="escargots" data-price="12"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+                </div>
+                <!-- Entrée 3 -->
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_foie_title">Foie Gras Maison</h3>
+                        <span class="price">21 €</span>
+                    </div>
+                    <p data-i18n="item_foie_desc">Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="foie_gras" data-price="21"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+                </div>
+                <!-- Entrée 4 -->
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_oeufs_title">Oeufs Mayonnaise</h3>
+                        <span class="price">8 €</span>
+                    </div>
+                    <p data-i18n="item_oeufs_desc">Les œufs durs traditionnels et notre mayonnaise secrète.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="oeufs_mayo" data-price="8"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
                 </div>
             </div>
 
-            <div class="items-grid">
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Entrecôte Marchand de Vin</h3>
-                        <span class="price">32.-</span>
-                    </div>
-                    <p>300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="entrecote" data-price="32">+ Ajouter</button>
-                </div>
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Magret de Canard</h3>
-                        <span class="price">28.-</span>
-                    </div>
-                    <p>Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="magret" data-price="28">+ Ajouter</button>
-                </div>
-                <div class="menu-item-clean">
-                    <div class="menu-item-clean-header">
-                        <h3>Pavé de Saumon</h3>
-                        <span class="price">24.-</span>
-                    </div>
-                    <p>Rôti sur le feuillet de poireaux, beurre blanc citronné, câpres et riz.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="saumon_pave" data-price="24">+ Ajouter</button>
-                </div>
-            </div>
         </section>
 
-        <!-- Desserts -->
+        <!-- Plat du jour banner -->
+        <div class="plat-du-jour-block">
+            <span class="sub" data-i18n="plat_du_jour_sub">LE PLAT DU JOUR EN TOUTE LÉGÈRETÉ</span>
+            <div class="plat-du-jour-box">
+                <span class="plat-p">24 €</span>
+                <h3 class="plat-du-jour-title" data-i18n="item_lieu_title">Lieu Jaune sauce passion</h3>
+                <p class="plat-du-jour-desc" data-i18n="item_lieu_desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
+                <button class="btn-add-subtle add-to-cart" data-name="lieu_jaune" data-price="24" style="margin: 0 auto; display:block;"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+            </div>
+        </div>
+
         <section class="menu-section-block">
             <div class="menu-section-header">
-                <span class="sub">NOS DOUCEURS</span>
-                <h2>Les Desserts</h2>
+                <span class="sub" data-i18n="cat_plats">Les Plats</span>
+                <h2>Pour Suivre</h2>
             </div>
-            <div class="items-grid">
+            
+            <div class="items-grid" style="grid-template-columns: 1fr;"> <!-- Les autres plats s'affichent en liste pour le contraste -->
                 <div class="menu-item-clean">
                     <div class="menu-item-clean-header">
-                        <h3>Crème Brûlée à la Vanille</h3>
-                        <span class="price">9.-</span>
+                        <h3 data-i18n="item_entrecote_title">Entrecôte Marchand de Vin</h3>
+                        <span class="price">32 €</span>
                     </div>
-                    <p>La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="creme_brulee" data-price="9">+ Ajouter</button>
+                    <p data-i18n="item_entrecote_desc">300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="entrecote" data-price="32"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
                 </div>
                 <div class="menu-item-clean">
                     <div class="menu-item-clean-header">
-                        <h3>Tarte Tatin de la Mère</h3>
-                        <span class="price">11.-</span>
+                        <h3 data-i18n="item_magret_title">Magret de Canard</h3>
+                        <span class="price">28 €</span>
                     </div>
-                    <p>Pommes fondantes et très caramélisées dans le moule, crème fraiche épaisse.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="tarte_tatin" data-price="11">+ Ajouter</button>
+                    <p data-i18n="item_magret_desc">Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="magret_canard" data-price="28"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_saumon_pave_title">Pavé de Saumon</h3>
+                        <span class="price">24 €</span>
+                    </div>
+                    <p data-i18n="item_saumon_pave_desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="saumon_pave" data-price="24"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
                 </div>
             </div>
         </section>
 
-        <!-- Boissons -->
-        <section class="menu-section-block" id="boissons">
+        <!-- Section: Desserts -->
+        <section class="menu-section-block">
             <div class="menu-section-header">
-                <span class="sub">POUR ACCOMPAGNER</span>
-                <h2>Les Boissons</h2>
+                <span class="sub" data-i18n="cat_douceurs">NOS DOUCEURS</span>
+                <h2 data-i18n="cat_desserts">Les Desserts</h2>
             </div>
+            
             <div class="items-grid">
                 <div class="menu-item-clean">
                     <div class="menu-item-clean-header">
-                        <h3>Negroni Signature</h3>
-                        <span class="price">14.-</span>
+                        <h3 data-i18n="item_creme_title">Crème Brûlée à la Vanille</h3>
+                        <span class="price">9 €</span>
                     </div>
-                    <p>Gin artisanal, Campari, Vermouth Rouge et une tranche d'orange séchée.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="negroni" data-price="14">+ Ajouter</button>
+                    <p data-i18n="item_creme_desc">La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="creme_brulee" data-price="9"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
                 </div>
                 <div class="menu-item-clean">
                     <div class="menu-item-clean-header">
-                        <h3>Saint-Estèphe (Verre/Bouteille)</h3>
-                        <span class="price">9.- / 45.-</span>
+                        <h3 data-i18n="item_tatin_title">Tarte Tatin de la Mère</h3>
+                        <span class="price">10 €</span>
                     </div>
-                    <p>Vin de Bordeaux, riche et épicé avec des tanins doux. Un délice.</p>
-                    <button class="btn-add-subtle add-to-cart" data-name="vin_verre" data-price="9">+ Ajouter Verre</button>
+                    <p data-i18n="item_tatin_desc">Pommes fondantes et très caramélisées, crème fraiche épaisse.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="tarte_tatin" data-price="10"><span data-i18n="add_to_cart_btn">+ Ajouter</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Boissons -->
+        <section class="menu-section-block">
+            <div class="menu-section-header">
+                <span class="sub" data-i18n="cat_accompagnement">POUR ACCOMPAGNER</span>
+                <h2 data-i18n="drinks_title">Les Boissons</h2>
+            </div>
+            
+            <div class="items-grid">
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_negroni_title">Negroni Signature</h3>
+                        <span class="price">12 €</span>
+                    </div>
+                    <p data-i18n="item_negroni_desc">Gin artisanal, Campari, Vermouth Rouge et tranche d'orange séchée.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="negroni" data-price="12"><span data-i18n="add_glass_btn">+ Ajouter Verre</span></button>
+                </div>
+                <div class="menu-item-clean">
+                    <div class="menu-item-clean-header">
+                        <h3 data-i18n="item_vin_title">Saint-Estèphe (Verre/Bouteille)</h3>
+                        <span class="price">9 € / 45 €</span>
+                    </div>
+                    <p data-i18n="item_vin_desc">Vin rouge de Bordeaux, riche et épicé avec des tanins doux.</p>
+                    <button class="btn-add-subtle add-to-cart" data-name="vin_verre" data-price="9"><span data-i18n="add_glass_btn">+ Ajouter Verre</span></button>
                 </div>
             </div>
         </section>
 
         <!-- Bottom CTA Reservation -->
         <section class="reservation-cta">
-            <span class="sub">RÉSERVEZ UNE TABLE</span>
-            <h2>Réservez votre moment<br>d'exception au Café Léa</h2>
-            <p>Assurez-vous d'avoir la meilleure place pour votre repas en famille ou avec des amis.</p>
-            <a href="reservation.html" class="btn-reserve-dark">RÉSERVER UNE TABLE</a>
+            <span class="sub" data-i18n="reserve_cta_sub">RÉSERVEZ UNE TABLE</span>
+            <h2 data-i18n="reserve_cta_title">Réservez votre moment<br>d'exception au Café Léa</h2>
+            <p data-i18n="reserve_cta_desc">Assurez-vous d'avoir la meilleure place pour votre repas en famille ou avec des amis.</p>
+            <a href="reservation.html" class="btn-reserve" data-i18n="reserve_cta_btn">RÉSERVER UNE TABLE</a>
         </section>
     </main>
 
-    <footer style="text-align:center; padding: 2rem; color: #999; font-size: 0.8rem; background: transparent; border-top: 1px solid #EBEBEB; margin-top: 4rem;">
-        &copy; 2026 Café Léa. Tous droits réservés.
+    <footer style="text-align: center; padding: 40px; color: #999; font-size: 0.9rem;">
+        <p data-i18n="footer_rights">© 2026 Café Léa. Tous droits réservés.</p>
     </footer>
 
-    <!-- Cart Sticky Bar that will be populated by script.js globally if cart not empty -->
-    <div class="cart-sticky-bar" id="cart-sticky-bar">
-        <div class="cart-bar-left">
-            <span class="cart-bar-total" id="sticky-total">0,00€</span>
-            <span class="cart-bar-count">
-                <span class="icon">🛒</span>
-                <span id="sticky-count">0</span> Articles
-            </span>
-        </div>
-        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link">FINALISER LA COMMANDE</a>
-    </div>
+    <!-- Translations and Logic -->
+    <script type="module">
+        import translations from './translations.js';
 
-    <!-- Minimal script to trigger add to cart visually and update globally handled by script.js -->
-    <script src="script.js"></script>
+        // Cart storage Logic for direct Add buttons in Menu
+        let cart = JSON.parse(localStorage.getItem('lea_cart')) || [];
+        function updateCartStorage() {
+            localStorage.setItem('lea_cart', JSON.stringify(cart));
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemData = e.currentTarget.dataset;
+                const nameId = itemData.name;
+                const price = parseFloat(itemData.price);
+                
+                const existing = cart.find(c => c.id === nameId);
+                if(existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({ id: nameId, qty: 1, price: price });
+                }
+                updateCartStorage();
+
+                // Button feedback
+                const originalText = e.currentTarget.innerHTML;
+                e.currentTarget.innerHTML = '<span style="color:var(--navy)">Ajouté ✓</span>';
+                setTimeout(() => {
+                    e.currentTarget.innerHTML = originalText;
+                }, 1000);
+            });
+        });
+
+        // Simple Language Switcher function
+        const languageSwitcher = () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            function setLang(lang) {
+                // Remove active class from all
+                langBtns.forEach(b => { b.style.color = '#666'; b.style.fontWeight = '500'; });
+                
+                const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+                if(activeBtn) {
+                    activeBtn.style.color = 'var(--navy)';
+                    activeBtn.style.fontWeight = '700';
+                }
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.placeholder = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+            }
+
+            // Defaults to fr
+            setLang('fr');
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLang(e.target.dataset.lang);
+                });
+            });
+        };
+
+        languageSwitcher();
+    </script>
 </body>
 </html>
