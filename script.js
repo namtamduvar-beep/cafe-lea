@@ -1,4 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Weather Widget (Paris)
+    async function fetchWeather() {
+        const widget = document.getElementById('weather-widget');
+        const iconEl = document.getElementById('weather-icon');
+        const tempEl = document.getElementById('weather-temp');
+        const descEl = document.getElementById('weather-desc');
+        
+        if (!widget) return;
+        
+        try {
+            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&current_weather=true');
+            if (!res.ok) throw new Error("Weather API error");
+            const data = await res.json();
+            
+            const temp = Math.round(data.current_weather.temperature);
+            const wmo = data.current_weather.weathercode;
+            
+            let icon = '☀️';
+            let key = 'weather_clear';
+            
+            if (wmo === 0) { icon = '☀️'; key = 'weather_clear'; }
+            else if ([1, 2, 3].includes(wmo)) { icon = '⛅'; key = 'weather_cloudy'; }
+            else if ([45, 48].includes(wmo)) { icon = '🌫️'; key = 'weather_fog'; }
+            else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(wmo)) { icon = '🌧️'; key = 'weather_rain'; }
+            else if ([71, 73, 75, 77, 85, 86].includes(wmo)) { icon = '❄️'; key = 'weather_snow'; }
+            else if ([95, 96, 99].includes(wmo)) { icon = '⛈️'; key = 'weather_storm'; }
+            
+            // Local dict for weather
+            const weatherLocales = {
+                fr: { weather_clear: 'Ciel dégagé', weather_cloudy: 'Nuageux', weather_fog: 'Brouillard', weather_rain: 'Pluvieux', weather_snow: 'Neige', weather_storm: 'Orage' },
+                en: { weather_clear: 'Clear sky', weather_cloudy: 'Cloudy', weather_fog: 'Fog', weather_rain: 'Rainy', weather_snow: 'Snow', weather_storm: 'Storm' },
+                es: { weather_clear: 'Cielo despejado', weather_cloudy: 'Nublado', weather_fog: 'Niebla', weather_rain: 'Lluvioso', weather_snow: 'Nieve', weather_storm: 'Tormenta' },
+                it: { weather_clear: 'Cielo sereno', weather_cloudy: 'Nuvoloso', weather_fog: 'Nebbia', weather_rain: 'Piovoso', weather_snow: 'Neve', weather_storm: 'Tempesta' }
+            };
+            
+            // Helper to get active lang
+            const updateWeatherLang = (lang) => {
+                if (descEl) descEl.innerText = 'Paris • ' + (weatherLocales[lang] && weatherLocales[lang][key] ? weatherLocales[lang][key] : weatherLocales['fr'][key]);
+            };
+
+            // Set initial based on active .lang-btn or default 'fr'
+            const activeNavLangBtn = document.querySelector('.lang-btn.active');
+            let initialLang = activeNavLangBtn ? activeNavLangBtn.getAttribute('data-lang') : 'fr';
+            
+            if (iconEl) iconEl.innerText = icon;
+            if (tempEl) tempEl.innerText = temp + '°C';
+            updateWeatherLang(initialLang);
+            
+            // Hook into language switcher clicks
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    updateWeatherLang(e.currentTarget.getAttribute('data-lang'));
+                });
+            });
+            
+            widget.style.display = 'inline-flex';
+            
+        } catch (err) {
+            console.error('Could not fetch weather', err);
+        }
+    }
+    
+    fetchWeather();
+
     // Translation Data
     const translations = {
         fr: {
@@ -598,67 +663,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Weather Widget (Paris)
-    async function fetchWeather() {
-        const widget = document.getElementById('weather-widget');
-        const iconEl = document.getElementById('weather-icon');
-        const tempEl = document.getElementById('weather-temp');
-        const descEl = document.getElementById('weather-desc');
-        
-        if (!widget) return;
-        
-        try {
-            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&current_weather=true');
-            if (!res.ok) throw new Error("Weather API error");
-            const data = await res.json();
-            
-            const temp = Math.round(data.current_weather.temperature);
-            const wmo = data.current_weather.weathercode;
-            
-            let icon = '☀️';
-            let key = 'weather_clear';
-            
-            if (wmo === 0) { icon = '☀️'; key = 'weather_clear'; }
-            else if ([1, 2, 3].includes(wmo)) { icon = '⛅'; key = 'weather_cloudy'; }
-            else if ([45, 48].includes(wmo)) { icon = '🌫️'; key = 'weather_fog'; }
-            else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(wmo)) { icon = '🌧️'; key = 'weather_rain'; }
-            else if ([71, 73, 75, 77, 85, 86].includes(wmo)) { icon = '❄️'; key = 'weather_snow'; }
-            else if ([95, 96, 99].includes(wmo)) { icon = '⛈️'; key = 'weather_storm'; }
-            
-            // Local dict for weather
-            const weatherLocales = {
-                fr: { weather_clear: 'Ciel dégagé', weather_cloudy: 'Nuageux', weather_fog: 'Brouillard', weather_rain: 'Pluvieux', weather_snow: 'Neige', weather_storm: 'Orage' },
-                en: { weather_clear: 'Clear sky', weather_cloudy: 'Cloudy', weather_fog: 'Fog', weather_rain: 'Rainy', weather_snow: 'Snow', weather_storm: 'Storm' },
-                es: { weather_clear: 'Cielo despejado', weather_cloudy: 'Nublado', weather_fog: 'Niebla', weather_rain: 'Lluvioso', weather_snow: 'Nieve', weather_storm: 'Tormenta' },
-                it: { weather_clear: 'Cielo sereno', weather_cloudy: 'Nuvoloso', weather_fog: 'Nebbia', weather_rain: 'Piovoso', weather_snow: 'Neve', weather_storm: 'Tempesta' }
-            };
-            
-            // Helper to get active lang
-            const updateWeatherLang = (lang) => {
-                descEl.innerText = 'Paris • ' + (weatherLocales[lang] && weatherLocales[lang][key] ? weatherLocales[lang][key] : weatherLocales['fr'][key]);
-            };
-
-            // Set initial based on active .lang-btn or default 'fr'
-            const activeNavLangBtn = document.querySelector('.lang-btn.active');
-            let initialLang = activeNavLangBtn ? activeNavLangBtn.getAttribute('data-lang') : 'fr';
-            
-            iconEl.innerText = icon;
-            tempEl.innerText = temp + '°C';
-            updateWeatherLang(initialLang);
-            
-            // Hook into language switcher clicks
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    updateWeatherLang(e.currentTarget.getAttribute('data-lang'));
-                });
-            });
-            
-            widget.style.display = 'inline-flex';
-            
-        } catch (err) {
-            console.error('Could not fetch weather', err);
-        }
-    }
-    
-    fetchWeather();
 });
+
