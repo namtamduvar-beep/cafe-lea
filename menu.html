@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Café Léa</title>
-    <meta name="description" content="Découvrez une cuisine d'exception, alliant tradition et fraîcheur pour le plaisir de tous les palais au Café Léa.">
+    <meta name="description"
+        content="Découvrez une cuisine d'exception, alliant tradition et fraîcheur pour le plaisir de tous les palais au Café Léa.">
     <link rel="stylesheet" href="style.css">
     <style>
         .menu-section {
             padding: 8rem 0;
         }
+
         .menu-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
         }
+
         .menu-cat {
             margin-bottom: 4rem;
         }
+
         .menu-cat-title {
             font-size: 2.5rem;
             color: var(--accent-gold);
@@ -25,6 +30,7 @@
             border-bottom: 1px solid #EEE;
             padding-bottom: 1rem;
         }
+
         .menu-item {
             display: flex;
             justify-content: space-between;
@@ -33,15 +39,18 @@
             padding-bottom: 1rem;
             border-bottom: 1px dotted #DDD;
         }
+
         .item-info h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
+
         .item-info p {
             font-style: italic;
             color: var(--text-muted);
             font-size: 0.95rem;
         }
+
         .item-price {
             font-family: var(--font-serif);
             font-weight: 700;
@@ -50,6 +59,7 @@
         }
     </style>
 </head>
+
 <body>
     <header id="main-header" class="scrolled">
         <div class="logo">Café Léa</div>
@@ -58,7 +68,9 @@
                 <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
                 <li><a href="menu.html" class="active" data-i18n="nav_menu">Menu</a></li>
                 <li><a href="reservation.html" data-i18n="nav_reservation">Réservation</a></li>
-                <li><a href="#" class="btn-order" style="color: var(--accent-order); font-weight: 600; letter-spacing: 1px;" data-i18n="nav_order">COMMANDER</a></li>
+                <li><a href="#" class="btn-order"
+                        style="color: var(--accent-order); font-weight: 600; letter-spacing: 1px;"
+                        data-i18n="nav_order">COMMANDER</a></li>
             </ul>
         </nav>
         <div class="lang-switcher">
@@ -70,7 +82,8 @@
     </header>
 
     <main>
-        <div class="page-intro" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/cafe_lea_hero.png'); background-size: cover; background-position: center;">
+        <div class="page-intro"
+            style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/cafe_lea_hero.png'); background-size: cover; background-position: center;">
             <h1 class="reveal" data-i18n="menu_intro">Une Cuisine d'Exception</h1>
         </div>
 
@@ -84,17 +97,22 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>18€</span>
-                        <button class="add-to-cart" data-name="item_mer" data-price="18" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_mer" data-price="18"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-info">
                         <h3 data-i18n="item_velouté">Velouté de Saison</h3>
-                        <p data-i18n="item_velouté_desc">Légumes du marché, croûtons à l'ail, filet d'huile de truffe</p>
+                        <p data-i18n="item_velouté_desc">Légumes du marché, croûtons à l'ail, filet d'huile de truffe
+                        </p>
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>12€</span>
-                        <button class="add-to-cart" data-name="item_velouté" data-price="12" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_velouté" data-price="12"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -104,7 +122,9 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>15€</span>
-                        <button class="add-to-cart" data-name="item_tartare" data-price="15" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_tartare" data-price="15"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
             </div>
@@ -114,11 +134,14 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <h3 data-i18n="item_filet">Filet de Bœuf</h3>
-                        <p data-i18n="item_filet_desc">Sauce au poivre vert, purée de pommes de terre truffée, légumes glacés</p>
+                        <p data-i18n="item_filet_desc">Sauce au poivre vert, purée de pommes de terre truffée, légumes
+                            glacés</p>
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>28€</span>
-                        <button class="add-to-cart" data-name="item_filet" data-price="28" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_filet" data-price="28"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -128,7 +151,9 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>24€</span>
-                        <button class="add-to-cart" data-name="item_saumon" data-price="24" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_saumon" data-price="24"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -138,7 +163,9 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>22€</span>
-                        <button class="add-to-cart" data-name="item_risotto" data-price="22" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_risotto" data-price="22"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
             </div>
@@ -152,7 +179,9 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>9€</span>
-                        <button class="add-to-cart" data-name="item_tatin" data-price="9" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_tatin" data-price="9"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -162,7 +191,9 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>8€</span>
-                        <button class="add-to-cart" data-name="item_mousse" data-price="8" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_mousse" data-price="8"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -172,50 +203,72 @@
                     </div>
                     <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span>10€</span>
-                        <button class="add-to-cart" data-name="item_gourmand" data-price="10" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                        <button class="add-to-cart" data-name="item_gourmand" data-price="10"
+                            style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;"
+                            data-i18n="order_btn">Commander</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <<<<<<< HEAD <footer class="footer">
         <div class="container">
             <div style="text-align: center; color: #666; font-size: 0.8rem;">
                 &copy; 2026 Café Léa. Tous droits réservés.
-            </div>
-        </div>
-    </footer>
+                =======
+                <footer class="main-footer">
+                    <div class="container footer-content">
+                        <div class="footer-info">
+                            <h3>Nous trouver</h3>
+                            <p>12 Rue de la Gourmandise<br>75000 Paris, France</p>
+                            <p>Tel: +33 1 23 45 67 89</p>
+                        </div>
+                        <div class="footer-social">
+                            <h3>Suivez-nous</h3>
+                            <a href="#">Instagram</a>
+                            <a href="#">Facebook</a>
+                        </div>
+                        <div class="footer-map placeholder-map">
+                            <div class="map-pin">📍 Paris, France</div>
+                            >>>>>>> e6ed97c (Initial Next.js setup)
+                        </div>
+                    </div>
+                </footer>
 
-    <div id="cart-floating" class="cart-floating">
-        <div class="cart-count" id="cart-count">0</div>
-        <div>
-            <span data-i18n="cart_summary">Votre commande : </span>
-            <span class="cart-total" id="cart-total">0.00€</span>
-        </div>
-        <a href="#" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;" data-i18n="cart_pay">Payer</a>
-    </div>
+                <<<<<<< HEAD <div id="cart-floating" class="cart-floating">
+                    <div class="cart-count" id="cart-count">0</div>
+                    <div>
+                        <span data-i18n="cart_summary">Votre commande : </span>
+                        <span class="cart-total" id="cart-total">0.00€</span>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;"
+                        data-i18n="cart_pay">Payer</a>
+            </div>
 
-    <!-- Cart Modal -->
-    <div id="cart-modal-overlay" class="cart-modal-overlay">
-        <div class="cart-modal">
-            <div class="cart-modal-header">
-                <h2 data-i18n="cart_title">Ma Commande</h2>
-                <button class="close-cart" id="close-cart-btn">&times;</button>
-            </div>
-            <div id="cart-items-list" class="cart-items-list">
-                <!-- Items will be injected here -->
-            </div>
-            <div class="cart-modal-footer">
-                <div class="cart-modal-total">
-                    <span data-i18n="total_label">Total</span>
-                    <span id="modal-total">0.00€</span>
+            <!-- Cart Modal -->
+            <div id="cart-modal-overlay" class="cart-modal-overlay">
+                <div class="cart-modal">
+                    <div class="cart-modal-header">
+                        <h2 data-i18n="cart_title">Ma Commande</h2>
+                        <button class="close-cart" id="close-cart-btn">&times;</button>
+                    </div>
+                    <div id="cart-items-list" class="cart-items-list">
+                        <!-- Items will be injected here -->
+                    </div>
+                    <div class="cart-modal-footer">
+                        <div class="cart-modal-total">
+                            <span data-i18n="total_label">Total</span>
+                            <span id="modal-total">0.00€</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
+                    </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
             </div>
-        </div>
-    </div>
 
-    <script src="script.js"></script>
+            =======
+            >>>>>>> e6ed97c (Initial Next.js setup)
+            <script src="script.js"></script>
 </body>
+
 </html>

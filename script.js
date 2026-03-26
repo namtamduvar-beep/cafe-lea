@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('cafe_lea_lang', lang);
         document.documentElement.lang = lang;
-        
+
         // Refresh cart modal strings
         renderCartModal();
     }
@@ -352,9 +352,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCartModal() {
         if (!cartItemsList) return;
-        
+
         const currentLang = localStorage.getItem('cafe_lea_lang') || 'fr';
-        
+
         if (cart.length === 0) {
             cartItemsList.innerHTML = `<p style="padding: 2rem; text-align: center; opacity: 0.6;" data-i18n="cart_empty">${translations[currentLang].cart_empty}</p>`;
             return;
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentLang = localStorage.getItem('cafe_lea_lang') || 'fr';
             const originalText = translations[currentLang].order_btn;
             btn.textContent = translations[currentLang].order_added;
-            
+
             setTimeout(() => {
                 btn.textContent = originalText;
             }, 1000);
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // If it's the hero order button, it usually links to menu page.
             // But if we are on menu page, or if it's the nav one, we open modal.
             if (trigger.tagName === 'A' && trigger.getAttribute('href') !== '#') return;
-            
+
             e.preventDefault();
             e.stopPropagation();
             openModal();
