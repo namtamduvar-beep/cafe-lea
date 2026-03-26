@@ -346,6 +346,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (item.quantity <= 0) {
                 cart = cart.filter(i => i.name !== name);
             }
+        } else if (delta > 0) {
+            // fallback: find the price from a button if we didn't add it yet
+            const btn = document.querySelector(`.add-to-cart[data-name="${name}"]`);
+            if(btn) {
+                addToCart(name, btn.getAttribute('data-price'));
+            }
         }
         saveCart();
     }
@@ -363,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsList.innerHTML = cart.map(item => `
             <div class="cart-item-row">
                 <div class="cart-item-info">
-                    <h4>${translations[currentLang][item.name] || item.name}</h4>
+                    <h4>${translations[currentLang]?.[item.name] || item.name.replace(/_/g, ' ')}</h4>
                     <p class="cart-item-price">${item.price.toFixed(2)}€</p>
                 </div>
                 <div class="cart-item-controls">
@@ -374,6 +380,38 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
     }
+
+    function updatePageQtyCounters() {
+        // Sync local page counters (e.g. qty-display id="qty-soupe_oignon")
+        document.querySelectorAll('.qty-display').forEach(display => {
+            const itemName = display.id.replace('qty-', '');
+            const cartItem = cart.find(i => i.name === itemName);
+            display.textContent = cartItem ? cartItem.quantity : 0;
+        });
+
+        // Sync sticky cart bar
+        const stickyBar = document.getElementById('cart-sticky-bar');
+        if (stickyBar) {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            document.getElementById('sticky-count').textContent = totalItems;
+            document.getElementById('sticky-total').textContent = totalPrice.toFixed(2) + '€';
+            
+            if (totalItems > 0) {
+                stickyBar.classList.add('visible');
+            } else {
+                stickyBar.classList.remove('visible');
+            }
+        }
+    }
+
+    // Override saveCart locally to include counters update
+    const originalSaveCart = saveCart;
+    saveCart = () => {
+        originalSaveCart();
+        updatePageQtyCounters();
+    };
 
     // Expose quantity update function to global scope
     window.updateCartQty = (name, delta) => {
@@ -390,6 +428,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
+    // Event Listeners for +/- buttons in menu / commander grids
+    document.querySelectorAll('.qty-btn-menu').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const itemName = btn.getAttribute('data-item');
+            const action = btn.getAttribute('data-action');
+            if(action === 'plus') updateCartQty(itemName, 1);
+            if(action === 'minus') updateCartQty(itemName, -1);
+        });
+    });
+
     // Event Listeners for Adding
     document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -400,14 +448,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Visual feedback
             const currentLang = localStorage.getItem('cafe_lea_lang') || 'fr';
-            const originalText = translations[currentLang].order_btn;
-            btn.textContent = translations[currentLang].order_added;
+            const originalText = "AJOUTER";
+            btn.textContent = "✓";
 
             setTimeout(() => {
                 btn.textContent = originalText;
             }, 1000);
         });
     });
+
+    // Initial check
+    updateCartUI();
+    updatePageQtyCounters();
 
     // Header order button & Floating cart summary -> Open Modal
     const openCartTrigger = document.querySelectorAll('.btn-order, #cart-floating');

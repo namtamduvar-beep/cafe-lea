@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finaliser la Commande | Café Léa</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            max-width: 900px;
+            margin: 8rem auto 4rem;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            padding: 0 4%;
+        }
+        .checkout-form {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .checkout-form h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid #EBEBEB;
+            padding-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+        
+        .checkout-summary {
+            background: var(--bg-navy);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .checkout-summary h2 {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+        }
+        .summary-items {
+            margin-bottom: 2rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #CCD1D5;
+        }
+        .summary-item strong {
+            color: white;
+            font-weight: 500;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: var(--font-serif);
+            color: var(--accent-gold);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-pay {
+            width: 100%;
+            background: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-pay:hover {
+            background: #B8936A;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header" class="scrolled">
+        <div class="logo">Café Léa</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="commander.html">Retour à la commande</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <h2>Vos Coordonnées</h2>
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label>Nom complet</label>
+                        <input type="text" placeholder="Jean Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (Gmail ou autre)</label>
+                        <input type="email" placeholder="jean.dupont@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Numéro de téléphone</label>
+                        <input type="tel" placeholder="06 12 34 56 78" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Type de récupération</label>
+                        <select required>
+                            <option value="emporter">À emporter</option>
+                            <option value="livraison">Livraison (+4€)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Instructions spéciales</label>
+                        <textarea rows="3" placeholder="Allergies, sonnette cassée, etc."></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="checkout-summary">
+                <h2>Résumé</h2>
+                <div class="summary-items" id="checkout-items-list">
+                    <!-- Javascript will fill this -->
+                </div>
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="checkout-total">0.00€</span>
+                </div>
+                <button class="btn-pay" onclick="alert('Commande validée ! Un email de confirmation vous sera envoyé.')">Payer et Valider</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Specific logic to populate checkout summary from localStorage on this page
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutList = document.getElementById('checkout-items-list');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const cart = JSON.parse(localStorage.getItem('cafe_lea_cart')) || [];
+            
+            if(cart.length === 0) {
+                checkoutList.innerHTML = '<p>Votre panier est vide.</p>';
+            } else {
+                checkoutList.innerHTML = cart.map(item => `
+                    <div class="summary-item">
+                        <span>${item.quantity}x <strong>${item.name.replace(/_/g, ' ')}</strong></span>
+                        <span>${(item.price * item.quantity).toFixed(2)}€</span>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                checkoutTotal.textContent = total.toFixed(2) + '€';
+            }
+        });
+    </script>
+</body>
+</html>

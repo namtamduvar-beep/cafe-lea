@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander | Café Léa</title>
+    <meta name="description" content="Commandez vos plats préférés du Café Léa en ligne.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .order-page-header {
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        .order-page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .order-page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .order-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4% 8rem;
+        }
+        
+        .order-category {
+            margin-bottom: 4rem;
+        }
+        .order-category h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+            border-bottom: 1px solid #EBEBEB;
+            padding-bottom: 1rem;
+        }
+        
+        .order-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .order-card {
+            background: var(--bg-white);
+            border: 1px solid #EBEBEB;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .order-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+        
+        .order-card-img {
+            height: 200px;
+            background-color: #F5F5F5;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .order-card-content {
+            padding: 1.5rem;
+        }
+        .order-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        .order-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .order-card-price {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: var(--font-serif);
+        }
+        .order-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            min-height: 40px;
+        }
+        
+        .order-card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F9FAFB;
+            padding: 0.8rem;
+            border-radius: 6px;
+        }
+        
+        /* Sticky Cart Bar for this page */
+        .cart-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4%;
+            z-index: 2000;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .cart-sticky-bar.visible {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header" class="scrolled">
+        <div class="logo">Café Léa</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+                <li><a href="menu.html" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="commander.html" class="active" data-i18n="nav_order">Commander</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switcher">
+            <a href="#" class="lang-btn" data-lang="fr">FR</a>
+            <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="order-page-header">
+            <h1 data-i18n="order_page_title">Passez votre Commande</h1>
+            <p data-i18n="order_page_desc">Sélectionnez vos plats et boissons. Paiement sur place ou à la livraison.</p>
+        </div>
+
+        <div class="order-container">
+            <!-- Entrées -->
+            <div class="order-category">
+                <h2 data-i18n="cat_entrées">Entrées</h2>
+                <div class="order-grid">
+                    <div class="order-card">
+                        <div class="order-card-img" style="background-image: url('img/cafe_lea_plat_du_jour.png');"></div>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Soupe à l'Oignon</span>
+                                <span class="order-card-price">15€</span>
+                            </div>
+                            <p class="order-card-desc">Gratinée au Comté, bouillon maison d'oignons et croûtons à l'ail.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="soupe_oignon">−</button>
+                                    <span class="qty-display" id="qty-soupe_oignon">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="soupe_oignon">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="soupe_oignon" data-price="15">AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plats -->
+            <div class="order-category">
+                <h2 data-i18n="cat_plats">Plats</h2>
+                <div class="order-grid">
+                    <div class="order-card">
+                        <div class="order-card-img" style="background-image: url('img/avocado_toast_1774515001866.png');"></div>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Pavé de Saumon</span>
+                                <span class="order-card-price">24€</span>
+                            </div>
+                            <p class="order-card-desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="saumon_pave">−</button>
+                                    <span class="qty-display" id="qty-saumon_pave">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="saumon_pave">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="saumon_pave" data-price="24">AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-card">
+                        <div class="order-card-img" style="background-image: url('img/cafe_lea_plat_du_jour.png');"></div>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Entrecôte Marchand de Vin</span>
+                                <span class="order-card-price">36€</span>
+                            </div>
+                            <p class="order-card-desc">300g, sauce vin rouge et échalotes, frites maison.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="entrecote">−</button>
+                                    <span class="qty-display" id="qty-entrecote">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="entrecote">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="entrecote" data-price="36">AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boissons -->
+            <div class="order-category">
+                <h2 data-i18n="drinks_title">Boissons</h2>
+                <div class="order-grid">
+                    <div class="order-card">
+                        <div class="order-card-img" style="background-image: url('img/cafe_lea_boissons.png');"></div>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Negroni Signature</span>
+                                <span class="order-card-price">14€</span>
+                            </div>
+                            <p class="order-card-desc">Gin de caractère, Campari, Vermouth doux.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="negroni">−</button>
+                                    <span class="qty-display" id="qty-negroni">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="negroni">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="negroni" data-price="14">AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sticky Cart Bar -->
+    <div class="cart-sticky-bar" id="cart-sticky-bar">
+        <div class="cart-bar-left">
+            <span class="cart-bar-total" id="sticky-total">0,00€</span>
+            <span class="cart-bar-count">
+                <span class="icon">🛒</span>
+                <span id="sticky-count">0</span> Articles
+            </span>
+        </div>
+        <!-- Link to Finalisation page -->
+        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link" data-i18n="cart_finalize">FINALISER LA COMMANDE</a>
+    </div>
+
+    <!-- Cart Modal Overlay (used mostly on other pages, but included here for script compatibility) -->
+    <div id="cart-modal-overlay" class="cart-modal-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
