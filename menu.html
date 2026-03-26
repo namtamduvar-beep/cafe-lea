@@ -6,128 +6,215 @@
     <title>Menu | Café Léa</title>
     <meta name="description" content="Découvrez une cuisine d'exception, alliant tradition et fraîcheur pour le plaisir de tous les palais au Café Léa.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-section {
+            padding: 8rem 0;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+        .menu-cat {
+            margin-bottom: 4rem;
+        }
+        .menu-cat-title {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #EEE;
+            padding-bottom: 1rem;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted #DDD;
+        }
+        .item-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .item-info p {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .item-price {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+        }
+    </style>
 </head>
 <body>
-    <header id="main-header" style="background-color: var(--bg-dark); padding: 1rem 5%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <header id="main-header" class="scrolled">
         <div class="logo">Café Léa</div>
         <nav>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menu.html" class="active">Menu</a></li>
-                <li><a href="reservation.html">Réservation</a></li>
+                <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+                <li><a href="menu.html" class="active" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="reservation.html" data-i18n="nav_reservation">Réservation</a></li>
+                <li><a href="#" class="btn-order" style="color: var(--accent-order); font-weight: 600; letter-spacing: 1px;" data-i18n="nav_order">COMMANDER</a></li>
             </ul>
         </nav>
+        <div class="lang-switcher">
+            <a href="#" class="lang-btn" data-lang="fr">FR</a>
+            <a href="#" class="lang-btn" data-lang="en">EN</a>
+            <a href="#" class="lang-btn" data-lang="es">ES</a>
+            <a href="#" class="lang-btn" data-lang="it">IT</a>
+        </div>
     </header>
 
     <main>
-        <div class="page-header" style="background-image: url('img/hero_bg_1774514989388.png');">
-            <h1>Une Cuisine d'Exception</h1>
+        <div class="page-intro" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/cafe_lea_hero.png'); background-size: cover; background-position: center;">
+            <h1 class="reveal" data-i18n="menu_intro">Une Cuisine d'Exception</h1>
         </div>
 
-        <section class="menu-content container" style="padding: 6rem 2rem;">
-            <div class="menu-category" style="margin-bottom: 5rem;">
-                <h2 style="font-size: 2.5rem; color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; margin-bottom: 2rem; display: inline-block;">Entrées</h2>
-                
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">L’Assiette de la Mer</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Saumon gravlax, huîtres, crevettes, mayonnaise maison</p>
+        <section class="menu-section container">
+            <div class="menu-cat reveal">
+                <h2 class="menu-cat-title" data-i18n="cat_entrées">Entrées</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_mer">L’Assiette de la Mer</h3>
+                        <p data-i18n="item_mer_desc">Saumon gravlax, huîtres, crevettes, mayonnaise maison</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">18€</div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>18€</span>
+                        <button class="add-to-cart" data-name="item_mer" data-price="18" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
                 </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Velouté de Saison</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Légumes du marché, croûtons à l'ail, filet d'huile de truffe</p>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_velouté">Velouté de Saison</h3>
+                        <p data-i18n="item_velouté_desc">Légumes du marché, croûtons à l'ail, filet d'huile de truffe</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">12€</div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>12€</span>
+                        <button class="add-to-cart" data-name="item_velouté" data-price="12" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
                 </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Tartare de Bœuf</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Coupé au couteau, câpres, échalotes, jaune d'œuf</p>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_tartare">Tartare de Bœuf</h3>
+                        <p data-i18n="item_tartare_desc">Coupé au couteau, câpres, échalotes, jaune d'œuf</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">15€</div>
-                </div>
-            </div>
-
-            <div class="menu-category" style="margin-bottom: 5rem;">
-                <h2 style="font-size: 2.5rem; color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; margin-bottom: 2rem; display: inline-block;">Plats</h2>
-                
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Filet de Bœuf</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Sauce au poivre vert, purée de pommes de terre truffée, légumes glacés</p>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>15€</span>
+                        <button class="add-to-cart" data-name="item_tartare" data-price="15" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">28€</div>
-                </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Pavé de Saumon</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Rôti sur peau, fondue de poireaux, beurre blanc citronné</p>
-                    </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">24€</div>
-                </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Risotto aux Champignons</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Crème de cèpes, parmesan affiné, persil plat</p>
-                    </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">22€</div>
                 </div>
             </div>
 
-            <div class="menu-category">
-                <h2 style="font-size: 2.5rem; color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); padding-bottom: 0.5rem; margin-bottom: 2rem; display: inline-block;">Desserts</h2>
-                
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Tarte Tatin</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Pommes caramélisées, pâte feuilletée, crème fraîche épaisse</p>
+            <div class="menu-cat reveal">
+                <h2 class="menu-cat-title" data-i18n="cat_plats">Plats</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_filet">Filet de Bœuf</h3>
+                        <p data-i18n="item_filet_desc">Sauce au poivre vert, purée de pommes de terre truffée, légumes glacés</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">9€</div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>28€</span>
+                        <button class="add-to-cart" data-name="item_filet" data-price="28" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
                 </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Mousse au Chocolat</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Chocolat noir 70%, éclats de fèves de cacao</p>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_saumon">Pavé de Saumon</h3>
+                        <p data-i18n="item_saumon_desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">8€</div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>24€</span>
+                        <button class="add-to-cart" data-name="item_saumon" data-price="24" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
                 </div>
-
-                <div class="menu-item" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; align-items: baseline; border-bottom: 1px dashed #E2E8F0; padding-bottom: 1rem;">
-                    <div class="item-details">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Café Gourmand</h3>
-                        <p style="color: #666; font-size: 0.95rem; font-style: italic;">Espresso accompagné de trois mignardises du chef</p>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_risotto">Risotto aux Champignons</h3>
+                        <p data-i18n="item_risotto_desc">Crème de cèpes, parmesan affiné, persil plat</p>
                     </div>
-                    <div class="item-price" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--accent-gold);">10€</div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>22€</span>
+                        <button class="add-to-cart" data-name="item_risotto" data-price="22" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-cat reveal">
+                <h2 class="menu-cat-title" data-i18n="cat_desserts">Desserts</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_tatin">Tarte Tatin</h3>
+                        <p data-i18n="item_tatin_desc">Pommes caramélisées, pâte feuilletée, crème fraîche épaisse</p>
+                    </div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>9€</span>
+                        <button class="add-to-cart" data-name="item_tatin" data-price="9" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_mousse">Mousse au Chocolat</h3>
+                        <p data-i18n="item_mousse_desc">Chocolat noir 70%, éclats de fèves de cacao</p>
+                    </div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>8€</span>
+                        <button class="add-to-cart" data-name="item_mousse" data-price="8" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3 data-i18n="item_gourmand">Café Gourmand</h3>
+                        <p data-i18n="item_gourmand_desc">Espresso accompagné de trois mignardises du chef</p>
+                    </div>
+                    <div class="item-price" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span>10€</span>
+                        <button class="add-to-cart" data-name="item_gourmand" data-price="10" style="background: none; border: 1px solid var(--accent-order); color: var(--accent-order); padding: 0.3rem 0.8rem; font-size: 0.7rem; cursor: pointer; margin-top: 0.5rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: all 0.3s ease;" data-i18n="order_btn">Commander</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container footer-content">
-            <div class="footer-info">
-                <h3>Nous trouver</h3>
-                <p>12 Rue de la Gourmandise<br>75000 Paris, France</p>
-                <p>Tel: +33 1 23 45 67 89</p>
-            </div>
-            <div class="footer-social">
-                <h3>Suivez-nous</h3>
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-            </div>
-            <div class="footer-map placeholder-map">
-                <div class="map-pin">📍 Paris, France</div>
+    <footer class="footer">
+        <div class="container">
+            <div style="text-align: center; color: #666; font-size: 0.8rem;">
+                &copy; 2026 Café Léa. Tous droits réservés.
             </div>
         </div>
     </footer>
+
+    <div id="cart-floating" class="cart-floating">
+        <div class="cart-count" id="cart-count">0</div>
+        <div>
+            <span data-i18n="cart_summary">Votre commande : </span>
+            <span class="cart-total" id="cart-total">0.00€</span>
+        </div>
+        <a href="#" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;" data-i18n="cart_pay">Payer</a>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal-overlay" class="cart-modal-overlay">
+        <div class="cart-modal">
+            <div class="cart-modal-header">
+                <h2 data-i18n="cart_title">Ma Commande</h2>
+                <button class="close-cart" id="close-cart-btn">&times;</button>
+            </div>
+            <div id="cart-items-list" class="cart-items-list">
+                <!-- Items will be injected here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-modal-total">
+                    <span data-i18n="total_label">Total</span>
+                    <span id="modal-total">0.00€</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
