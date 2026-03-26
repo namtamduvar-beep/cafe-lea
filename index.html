@@ -5,66 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Léa - Restaurant & Bar</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Top Left Menu Button -->
-    <a href="#hero" class="nav-button menu-btn">Menu</a>
-    
-    <!-- Floating Reservation Button -->
-    <a href="reservation.html" class="nav-button reserve-btn">Réservation</a>
-
-    <!-- Hero Section -->
-    <header id="hero" class="hero-section" style="background-image: url('images/hero.png');">
-        <div class="hero-overlay"></div>
-        <h1 class="hero-title">Café Léa</h1>
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <div class="logo">Café Léa</div>
+        <nav>
+            <a href="#menu" class="nav-link">Menu</a>
+            <a href="reservation.html" class="nav-btn-reservation">Réservations</a>
+        </nav>
     </header>
 
-    <!-- Navy Info Band -->
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('images/hero.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Café Léa</h1>
+            <p class="hero-subtitle">RESTAURANT - BAR - CAFÉ</p>
+        </div>
+    </section>
+
+    <!-- Navy Information Band -->
     <section class="info-band">
-        <div class="container">
-            <p>Bienvenue au Café Léa. Une expérience culinaire unique, alliant la tradition française à une touche de modernité. Dégustez nos créations dans un cadre chaleureux et raffiné.</p>
-        </div>
+        <p>Une escale gourmande au cœur de la ville, où chaque saveur raconte une histoire et chaque plat célèbre la tradition française.</p>
     </section>
 
-    <!-- Plat du Jour Section -->
-    <section id="plat-du-jour" class="carousel-section">
-        <h2 class="section-title">Le Plat du Jour</h2>
-        <div class="carousel-container" id="carousel-plat">
-            <div class="carousel-track">
-                <div class="carousel-slide" style="background-image: url('images/plat.png')"></div>
+    <!-- Menu Sections -->
+    <main id="menu">
+        <!-- Section: Entrées & Plats -->
+        <section class="grid-section">
+            <div class="grid-text">
+                <h2>Côté Cuisine</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <span class="item-name">Velouté de potiron aux éclats de châtaigne</span>
+                        <span class="item-price">9 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Escargots de Bourgogne de notre région</span>
+                        <span class="item-price">14 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Bœuf Bourguignon & carottes glacées</span>
+                        <span class="item-price">22 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Filet de bar rôti, purée onctueuse</span>
+                        <span class="item-price">24 €</span>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
-            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="carousel-section">
-        <h2 class="section-title">Notre Menu</h2>
-        <div class="carousel-container" id="carousel-menu">
-            <div class="carousel-track">
-                <div class="carousel-slide" style="background-image: url('images/menu.png')"></div>
+            <div class="grid-image">
+                <img src="images/plat.png" alt="Plat du jour">
             </div>
-            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
-            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
-        </div>
-    </section>
+        </section>
 
-    <!-- Boissons Section -->
-    <section id="boissons" class="carousel-section">
-        <h2 class="section-title">Cartes des Boissons</h2>
-        <div class="carousel-container" id="carousel-boissons">
-            <div class="carousel-track">
-                <div class="carousel-slide" style="background-image: url('images/boissons.png')"></div>
+        <!-- Section: Desserts & Boissons -->
+        <section class="grid-section reverse">
+            <div class="grid-text">
+                <h2>Côté Bar & Douceurs</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <span class="item-name">Crème Brûlée à la Vanille Bourbon</span>
+                        <span class="item-price">8 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Fondant au Chocolat Grand Cru</span>
+                        <span class="item-price">9 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Margarita Signature "Le Léa"</span>
+                        <span class="item-price">12 €</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Café Crème Sélection Premium</span>
+                        <span class="item-price">5 €</span>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-arrow prev" aria-label="Previous">&#10094;</button>
-            <button class="carousel-arrow next" aria-label="Next">&#10095;</button>
-        </div>
-    </section>
+            <div class="grid-image">
+                <img src="images/boissons.png" alt="Cocktails et Desserts">
+            </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Café Léa. Tous droits réservés.</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Nous trouver</h3>
+                <p>12 Rue de la Gourmandise, 75000 Paris</p>
+                <p>Ouvert tous les jours de 11h à 23h</p>
+            </div>
+            <!-- Map placeholder -->
+            <div class="footer-map">
+                <div class="map-placeholder">Plan Interactif</div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 Café Léa. Tous droits réservés.</p>
     </footer>
 
     <script src="app.js"></script>
