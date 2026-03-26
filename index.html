@@ -101,81 +101,77 @@
         </section>
     </main>
 
-    <<<<<<< HEAD <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Nous trouver</h3>
-                    <p>12 Rue de la Gourmandise, 75000 Paris</p>
-                    <p>Ouvert tous les jours de 11h à 23h</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Nous trouver</h3>
+                <p>12 Rue de la Gourmandise, 75000 Paris</p>
+                <p>Ouvert tous les jours de 11h à 23h</p>
+            </div>
+            <!-- Map placeholder -->
+            <div class="footer-map">
+                <div class="map-placeholder">Plan Interactif</div>
+                <footer class="footer">
+                    <div class="container">
+                        <div class="footer-grid">
+                            <div class="footer-col reveal">
+                                <h4>Restaurant</h4>
+                                <p>Café Léa</p>
+                                <p>Restauration &<br>Salon de thé</p>
+                            </div>
+                            <div class="footer-col reveal">
+                                <h4>Nous trouver</h4>
+                                <p>12 Rue de la Gourmandise</p>
+                                <p>75000 Paris, France</p>
+                                <p>+33 1 23 45 67 89</p>
+                            </div>
+                            <div class="footer-col reveal">
+                                <h4>Suivez-nous</h4>
+                                <a href="#">Instagram</a>
+                                <a href="#">Facebook</a>
+                                <a href="#">Twitter</a>
+                            </div>
+                            <div class="footer-col reveal">
+                                <div class="footer-map">
+                                    <span
+                                        style="font-family: var(--font-serif); color: var(--accent-gold); font-size: 1.2rem;">📍
+                                        Paris, France</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: #666; font-size: 0.8rem;"
+                            data-i18n="footer_rights">
+                            &copy; 2026 Café Léa. Tous droits réservés.
+
+                        </div>
+                    </div>
+                    <p class="copyright">&copy; 2026 Café Léa. Tous droits réservés.</p>
+                </footer>
+
+                <script src="app.js">
+                </script>
+                <!-- Cart Modal -->
+                <div id="cart-modal-overlay" class="cart-modal-overlay">
+                    <div class="cart-modal">
+                        <div class="cart-modal-header">
+                            <h2 data-i18n="cart_title">Ma Commande</h2>
+                            <button class="close-cart" id="close-cart-btn">&times;</button>
+                        </div>
+                        <div id="cart-items-list" class="cart-items-list">
+                            <!-- Items will be injected here -->
+                        </div>
+                        <div class="cart-modal-footer">
+                            <div class="cart-modal-total">
+                                <span data-i18n="total_label">Total</span>
+                                <span id="modal-total">0.00€</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
+                        </div>
+                    </div>
                 </div>
-                <!-- Map placeholder -->
-                <div class="footer-map">
-                    <div class="map-placeholder">Plan Interactif</div>
-                    =======
-                    <footer class="footer">
-                        <div class="container">
-                            <div class="footer-grid">
-                                <div class="footer-col reveal">
-                                    <h4>Restaurant</h4>
-                                    <p>Café Léa</p>
-                                    <p>Restauration &<br>Salon de thé</p>
-                                </div>
-                                <div class="footer-col reveal">
-                                    <h4>Nous trouver</h4>
-                                    <p>12 Rue de la Gourmandise</p>
-                                    <p>75000 Paris, France</p>
-                                    <p>+33 1 23 45 67 89</p>
-                                </div>
-                                <div class="footer-col reveal">
-                                    <h4>Suivez-nous</h4>
-                                    <a href="#">Instagram</a>
-                                    <a href="#">Facebook</a>
-                                    <a href="#">Twitter</a>
-                                </div>
-                                <div class="footer-col reveal">
-                                    <div class="footer-map">
-                                        <span
-                                            style="font-family: var(--font-serif); color: var(--accent-gold); font-size: 1.2rem;">📍
-                                            Paris, France</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: #666; font-size: 0.8rem;"
-                                data-i18n="footer_rights">
-                                &copy; 2026 Café Léa. Tous droits réservés.
-                                >>>>>>> 2098a8d (Initial Next.js setup)
-                            </div>
-                        </div>
-                        <p class="copyright">&copy; 2026 Café Léa. Tous droits réservés.</p>
-                    </footer>
 
-                    <<<<<<< HEAD <script src="app.js">
-                        </script>
-                        =======
-                        <!-- Cart Modal -->
-                        <div id="cart-modal-overlay" class="cart-modal-overlay">
-                            <div class="cart-modal">
-                                <div class="cart-modal-header">
-                                    <h2 data-i18n="cart_title">Ma Commande</h2>
-                                    <button class="close-cart" id="close-cart-btn">&times;</button>
-                                </div>
-                                <div id="cart-items-list" class="cart-items-list">
-                                    <!-- Items will be injected here -->
-                                </div>
-                                <div class="cart-modal-footer">
-                                    <div class="cart-modal-total">
-                                        <span data-i18n="total_label">Total</span>
-                                        <span id="modal-total">0.00€</span>
-                                    </div>
-                                    <button class="btn btn-primary" style="width: 100%;"
-                                        data-i18n="cart_pay">Payer</button>
-                                </div>
-                            </div>
-                        </div>
+                <script src="script.js"></script>
 
-                        <script src="script.js"></script>
-                        >>>>>>> 2098a8d (Initial Next.js setup)
 </body>
 
 </html>
