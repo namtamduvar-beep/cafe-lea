@@ -60,9 +60,10 @@ nav {
 }
 
 .nav-btn-reservation {
-    background: #FFF;
-    color: var(--dark);
-    padding: 12px 28px;
+    background: transparent;
+    color: #FFF;
+    padding: 10px 24px;
+    border: 1px solid #FFF;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
@@ -70,8 +71,41 @@ nav {
 }
 
 .nav-btn-reservation:hover {
-    background: #E5E7EB;
+    background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
+}
+
+.nav-btn-order {
+    background: #C5A880; /* Gold */
+    color: #FFF;
+    padding: 10px 24px;
+    border: 1px solid #C5A880;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.nav-btn-order:hover {
+    background: transparent;
+    color: #C5A880;
+    transform: translateY(-2px);
+}
+
+/* Adjust dark/scrolled header text colors */
+.scrolled .nav-link, 
+.scrolled .nav-btn-reservation,
+.scrolled .logo,
+.scrolled .lang-btn {
+    color: var(--dark);
+}
+.scrolled .nav-btn-reservation {
+    border-color: var(--dark);
+}
+.scrolled .nav-btn-reservation:hover {
+    background: rgba(0,0,0,0.05);
 }
 
 /* Hero Section */

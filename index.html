@@ -16,14 +16,19 @@
     <header class="top-nav">
         <div class="logo">Café Léa</div>
         <nav>
-            <a href="#menu" class="nav-link">Menu</a>
-            <a href="reservation.html" class="nav-btn-reservation">Réservations</a>
+            <ul>
+                <li><a href="menu.html" data-i18n="nav_menu" class="nav-link">Menu</a></li>
+            </ul>
         </nav>
-        <div class="lang-switcher">
-            <a href="#" class="lang-btn" data-lang="fr">FR</a>
-            <a href="#" class="lang-btn" data-lang="en">EN</a>
-            <a href="#" class="lang-btn" data-lang="es">ES</a>
-            <a href="#" class="lang-btn" data-lang="it">IT</a>
+        <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
+            <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
+            <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn" data-lang="fr">FR</a>
+                <a href="#" class="lang-btn" data-lang="en">EN</a>
+                <a href="#" class="lang-btn" data-lang="es">ES</a>
+                <a href="#" class="lang-btn" data-lang="it">IT</a>
+            </div>
         </div>
     </header>
 
