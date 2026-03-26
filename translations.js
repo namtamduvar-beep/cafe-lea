@@ -55,7 +55,13 @@ const translations = {
         info_mon_fri: "Lun - Ven : 08:00 - 22:00",
         info_sat_sun: "Sam - Dim : 09:00 - 23:00",
         info_address_title: "Adresse",
-        info_address: "123 Rue de la Paix, 75002 Paris"
+        info_address: "123 Rue de la Paix, 75002 Paris",
+        reviews_title: "Livre d'Or",
+        reviews_subtitle: "Ce que nos clients disent de nous",
+        reviews_leave: "Laissez votre avis",
+        reviews_name: "Votre nom",
+        reviews_comment: "Votre commentaire",
+        reviews_submit: "Envoyer l'avis"
     },
     en: {
         nav_accueil: "Home",
@@ -113,7 +119,13 @@ const translations = {
         info_mon_fri: "Mon - Fri: 08:00 - 22:00",
         info_sat_sun: "Sat - Sun: 09:00 - 23:00",
         info_address_title: "Address",
-        info_address: "123 Rue de la Paix, 75002 Paris"
+        info_address: "123 Rue de la Paix, 75002 Paris",
+        reviews_title: "Guestbook",
+        reviews_subtitle: "What our customers say about us",
+        reviews_leave: "Leave a review",
+        reviews_name: "Your name",
+        reviews_comment: "Your comment",
+        reviews_submit: "Submit review"
     },
     es: {
         nav_accueil: "Inicio",
@@ -171,7 +183,13 @@ const translations = {
         info_mon_fri: "Lun - Vie: 08:00 - 22:00",
         info_sat_sun: "Sáb - Dom: 09:00 - 23:00",
         info_address_title: "Dirección",
-        info_address: "123 Rue de la Paix, 75002 Paris"
+        info_address: "123 Rue de la Paix, 75002 Paris",
+        reviews_title: "Libro de Visitas",
+        reviews_subtitle: "Lo que nuestros clientes dicen de nosotros",
+        reviews_leave: "Deja tu opinión",
+        reviews_name: "Tu nombre",
+        reviews_comment: "Tu comentario",
+        reviews_submit: "Enviar opinión"
     },
     it: {
         nav_accueil: "Home",
@@ -229,7 +247,13 @@ const translations = {
         info_mon_fri: "Lun - Ven: 08:00 - 22:00",
         info_sat_sun: "Sab - Dom: 09:00 - 23:00",
         info_address_title: "Indirizzo",
-        info_address: "123 Rue de la Paix, 75002 Paris"
+        info_address: "123 Rue de la Paix, 75002 Paris",
+        reviews_title: "Libro degli Ospiti",
+        reviews_subtitle: "Cosa dicono di noi i nostri clienti",
+        reviews_leave: "Lascia una recensione",
+        reviews_name: "Il tuo nome",
+        reviews_comment: "Il tuo commento",
+        reviews_submit: "Invia recensione"
     }
 };
 

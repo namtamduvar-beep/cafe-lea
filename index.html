@@ -103,10 +103,47 @@
             <div class="grid-image">
                 <img src="images/boissons.png" alt="Cocktails et Desserts">
             </div>
-        </section>
-    </main>
+    </section>
 
-    <footer>
+        <!-- Reviews Section -->
+        <section class="reviews-section" id="reviews">
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h2 class="section-title" data-i18n="reviews_title">Livre d'Or</h2>
+                    <p class="section-subtitle" data-i18n="reviews_subtitle">Ce que nos clients disent de nous</p>
+                </div>
+                
+                <div class="reviews-grid" id="reviews-grid">
+                    <!-- Javascript will populate existing reviews -->
+                </div>
+
+                <div class="review-form-container reveal">
+                    <h3 data-i18n="reviews_leave">Laissez votre avis</h3>
+                    <form id="review-form">
+                        <div class="form-group">
+                            <label data-i18n="reviews_name">Votre nom</label>
+                            <input type="text" id="review-name" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="star-rating-input" id="star-rating-input">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                            <input type="hidden" id="review-rating" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="reviews_comment">Votre commentaire</label>
+                            <textarea id="review-comment" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit-review" data-i18n="reviews_submit">Envoyer l'avis</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>    <footer>
         <div class="footer-content">
             <div class="footer-info">
                 <h3>Nous trouver</h3>

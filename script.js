@@ -498,4 +498,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- REVIEWS SYSTEM ---
+    const defaultReviews = [
+        { name: "Sophie Martin", rating: 5, date: "15 Mars 2026", text: "Le meilleur café de Paris. Une ambiance incroyable et des pâtisseries à tomber !" },
+        { name: "Julien Dubois", rating: 4, date: "10 Mars 2026", text: "Très belle découverte. Le service est rapide et le pavé de saumon était parfait. Je recommande vivement." },
+        { name: "Emma Leclerc", rating: 5, date: "2 Mars 2026", text: "Endroit très charmant pour se détendre l'après-midi. La sélection de thés est superbe." }
+    ];
+
+    let reviews = JSON.parse(localStorage.getItem('cafe_lea_reviews')) || defaultReviews;
+    const reviewsGrid = document.getElementById('reviews-grid');
+    
+    function renderReviews() {
+        if (!reviewsGrid) return;
+        reviewsGrid.innerHTML = reviews.map(review => {
+            const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+            return `
+                <div class="review-card reveal">
+                    <div class="review-card-header">
+                        <span class="review-author">${review.name}</span>
+                        <span class="review-date">${review.date}</span>
+                    </div>
+                    <div class="review-stars">${stars}</div>
+                    <p class="review-text">"${review.text}"</p>
+                </div>
+            `;
+        }).join('');
+        
+        // Re-trigger reveal animation for newly added cards
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+    
+    // Initial render
+    renderReviews();
+
+    // Star rating input logic
+    const starsInput = document.querySelectorAll('.star-rating-input .star');
+    const ratingInput = document.getElementById('review-rating');
+    let currentRating = 0;
+
+    if (starsInput.length > 0) {
+        starsInput.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                const val = this.getAttribute('data-value');
+                highlightStars(val);
+            });
+            star.addEventListener('mouseout', function() {
+                highlightStars(currentRating);
+            });
+            star.addEventListener('click', function() {
+                currentRating = this.getAttribute('data-value');
+                ratingInput.value = currentRating;
+                highlightStars(currentRating);
+            });
+        });
+    }
+
+    function highlightStars(value) {
+        starsInput.forEach(star => {
+            if (star.getAttribute('data-value') <= value) {
+                star.classList.add('active');
+            } else {
+                star.classList.remove('active');
+            }
+        });
+    }
+
+    // Review Form Submission
+    const reviewForm = document.getElementById('review-form');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value;
+            const text = document.getElementById('review-comment').value;
+            const rating = parseInt(ratingInput.value, 10);
+
+            if (rating === 0) {
+                alert('Veuillez sélectionner une note avec les étoiles.');
+                return;
+            }
+
+            const today = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const dateStr = today.toLocaleDateString('fr-FR', options);
+
+            const newReview = { name, rating, date: dateStr, text };
+            reviews.unshift(newReview); // Add to top
+            
+            // Save & update UI
+            localStorage.setItem('cafe_lea_reviews', JSON.stringify(reviews));
+            renderReviews();
+
+            // Reset form
+            reviewForm.reset();
+            currentRating = 0;
+            ratingInput.value = 0;
+            highlightStars(0);
+            alert('Merci pour votre avis !');
+        });
+    }
 });
