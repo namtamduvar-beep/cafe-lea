@@ -47,6 +47,25 @@ nav {
     gap: 30px;
 }
 
+.nav-btn-menu {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    transition: var(--transition);
+}
+
+.nav-btn-menu:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #FFF;
+    transform: translateY(-2px);
+}
+
 .nav-link {
     color: #FFF;
     text-decoration: none;
@@ -116,15 +135,19 @@ nav {
 /* Adjust dark/scrolled header text colors */
 .scrolled .nav-link, 
 .scrolled .nav-btn-reservation,
+.scrolled .nav-btn-menu,
 .scrolled .logo,
 .scrolled .lang-btn {
     color: var(--dark);
 }
-.scrolled .nav-btn-reservation {
-    border-color: var(--dark);
+.scrolled .nav-btn-reservation,
+.scrolled .nav-btn-menu {
+    border-color: rgba(0,0,0,0.2);
 }
-.scrolled .nav-btn-reservation:hover {
+.scrolled .nav-btn-reservation:hover,
+.scrolled .nav-btn-menu:hover {
     background: rgba(0,0,0,0.05);
+    border-color: var(--dark);
 }
 
 /* Hero Section */

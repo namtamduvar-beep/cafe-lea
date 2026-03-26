@@ -15,14 +15,11 @@
     <!-- Header Navigation -->
     <header class="top-nav">
         <div class="logo">Café Léa</div>
-        <nav>
-            <ul>
-                <li><a href="menu.html" data-i18n="nav_menu" class="nav-link">Menu</a></li>
-            </ul>
-        </nav>
         <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
+            <a href="menu.html" class="nav-btn-menu" data-i18n="nav_menu">Menu</a>
             <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
+
             <div class="lang-switcher">
                 <a href="#" class="lang-btn" data-lang="fr">FR</a>
                 <a href="#" class="lang-btn" data-lang="en">EN</a>
@@ -186,27 +183,9 @@
 
                 <script src="app.js">
                 </script>
-                <!-- Cart Modal -->
-                <div id="cart-modal-overlay" class="cart-modal-overlay">
-                    <div class="cart-modal">
-                        <div class="cart-modal-header">
-                            <h2 data-i18n="cart_title">Ma Commande</h2>
-                            <button class="close-cart" id="close-cart-btn">&times;</button>
-                        </div>
-                        <div id="cart-items-list" class="cart-items-list">
-                            <!-- Items will be injected here -->
-                        </div>
-                        <div class="cart-modal-footer">
-                            <div class="cart-modal-total">
-                                <span data-i18n="total_label">Total</span>
-                                <span id="modal-total">0.00€</span>
-                            </div>
-                            <button class="btn btn-primary" style="width: 100%;" data-i18n="cart_pay">Payer</button>
-                        </div>
-                    </div>
-                </div>
 
                 <script src="script.js"></script>
+
 
 </body>
 

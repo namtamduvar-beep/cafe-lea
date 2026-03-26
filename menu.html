@@ -301,15 +301,12 @@
 <body>
     <header id="main-header">
         <div class="logo">Café Léa</div>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
-                <li><a href="menu.html" data-i18n="nav_menu" class="active">Menu</a></li>
-            </ul>
-        </nav>
         <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
+            <a href="index.html" class="nav-btn-secondary" data-i18n="nav_accueil" style="color: #666; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;">Accueil</a>
+            <a href="menu.html" class="nav-btn-menu" data-i18n="nav_menu" style="color: var(--navy); border-color: var(--navy);">Menu</a>
             <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
+
             <div class="lang-switcher">
                 <a href="#" class="lang-btn" data-lang="fr">FR</a>
                 <a href="#" class="lang-btn" data-lang="en">EN</a>
