@@ -6,18 +6,81 @@
     <title>Commander | Café Léa</title>
     <meta name="description" content="Commandez vos plats préférés du Café Léa en ligne.">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        body {
+            background-color: #FAF8F5; /* Cream background matches menu */
+        }
+        
+        #main-header {
+            position: relative;
+            background: transparent;
+            padding: 30px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #main-header .logo {
+            color: var(--navy);
+            font-size: 1.5rem;
+        }
+        #main-header nav ul li a {
+            color: #666;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        #main-header nav ul li a.active {
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .header-actions .nav-btn-reservation {
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .header-actions .nav-btn-order {
+            background: #C5A880;
+            color: white;
+            border: 1px solid #C5A880;
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
         .order-page-header {
-            padding: 8rem 0 3rem;
+            padding: 4rem 0 2rem;
             text-align: center;
         }
+        .order-page-header .subtitle {
+            color: #C5A880; /* Gold */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
         .order-page-header h1 {
-            font-size: 3rem;
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--navy);
+            font-style: italic;
             margin-bottom: 1rem;
         }
         .order-page-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+            color: #666;
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
         
         .order-container {
@@ -27,75 +90,122 @@
         }
         
         .order-category {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
         .order-category h2 {
-            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
             margin-bottom: 2rem;
-            color: var(--accent-gold);
-            border-bottom: 1px solid #EBEBEB;
+            color: var(--navy);
+            border-bottom: 1px dotted #ccc;
             padding-bottom: 1rem;
         }
         
         .order-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
         .order-card {
-            background: var(--bg-white);
+            background: #FFF;
             border: 1px solid #EBEBEB;
-            border-radius: 8px;
-            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
             transition: var(--transition);
         }
         .order-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             transform: translateY(-5px);
+            border-color: #C5A880;
         }
         
-        .order-card-img {
-            height: 200px;
-            background-color: #F5F5F5;
-            background-size: cover;
-            background-position: center;
-        }
-        
+        /* Instead of big images, we'll make it elegant and focus on the typography like the menu */
         .order-card-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         .order-card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
         .order-card-title {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--navy);
             font-weight: 600;
+            padding-right: 15px;
         }
         .order-card-price {
-            font-weight: 700;
-            color: var(--accent-gold);
+            font-weight: 600;
+            color: #C5A880;
             font-family: var(--font-serif);
+            font-size: 1.1rem;
         }
         .order-card-desc {
             font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            min-height: 40px;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            flex-grow: 1;
         }
         
         .order-card-actions {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #F9FAFB;
-            padding: 0.8rem;
-            border-radius: 6px;
+            padding-top: 1rem;
+            border-top: 1px dotted #EEE;
+        }
+        
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .qty-controls button {
+            background: none;
+            border: 1px solid #DDD;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--navy);
+            transition: all 0.2s;
+        }
+        .qty-controls button:hover {
+            border-color: var(--navy);
+            background: #FDFDFD;
+        }
+        .qty-display {
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 10px;
+            text-align: center;
+        }
+
+        .btn-ajouter {
+            background: none;
+            border: none;
+            color: #C5A880;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .btn-ajouter:hover {
+            color: var(--navy);
         }
         
         /* Sticky Cart Bar for this page */
@@ -104,7 +214,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--bg-dark);
+            background: var(--navy);
             color: white;
             display: flex;
             align-items: center;
@@ -118,10 +228,23 @@
         .cart-sticky-bar.visible {
             transform: translateY(0);
         }
+        .btn-finaliser {
+            background: #C5A880;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .btn-finaliser:hover {
+            background: #B4966B;
+        }
     </style>
 </head>
 <body>
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="logo">Café Léa</div>
         <nav>
             <ul>
@@ -129,42 +252,95 @@
                 <li><a href="menu.html" data-i18n="nav_menu">Menu</a></li>
             </ul>
         </nav>
-        <div class="header-actions">
+        <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
             <a href="reservation.html" class="nav-btn-reservation" data-i18n="nav_reservation">Réservation</a>
             <a href="commander.html" class="nav-btn-order" data-i18n="nav_order">Commander</a>
             <div class="lang-switcher">
-                <a href="#" class="lang-btn" data-lang="fr">FR</a>
-                <a href="#" class="lang-btn" data-lang="en">EN</a>
+                <a href="#" class="lang-btn" data-lang="fr" style="color:var(--navy);">FR</a>
             </div>
         </div>
     </header>
 
     <main>
         <div class="order-page-header">
-            <h1 data-i18n="order_page_title">Passez votre Commande</h1>
-            <p data-i18n="order_page_desc">Sélectionnez vos plats et boissons. Paiement sur place ou à la livraison.</p>
+             <span class="subtitle">FAITES VOTRE CHOIX</span>
+            <h1>Passez commande</h1>
+            <p>Sélectionnez vos plats et boissons pour une dégustation chez vous ou à emporter.</p>
         </div>
 
         <div class="order-container">
             <!-- Entrées -->
             <div class="order-category">
-                <h2 data-i18n="cat_entrées">Entrées</h2>
+                <h2>Les Entrées</h2>
                 <div class="order-grid">
                     <div class="order-card">
-                        <div class="order-card-img" style="background-image: url('img/cafe_lea_plat_du_jour.png');"></div>
                         <div class="order-card-content">
                             <div class="order-card-header">
                                 <span class="order-card-title">Soupe à l'Oignon</span>
-                                <span class="order-card-price">15€</span>
+                                <span class="order-card-price">14.-</span>
                             </div>
-                            <p class="order-card-desc">Gratinée au Comté, bouillon maison d'oignons et croûtons à l'ail.</p>
+                            <p class="order-card-desc">Délicieuse soupe accompagnée de croûtons à l'ail et fromage fondu.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="soupe_oignon">−</button>
                                     <span class="qty-display" id="qty-soupe_oignon">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="soupe_oignon">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="soupe_oignon" data-price="15">AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="soupe_oignon" data-price="14">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Escargots de Bourgogne</span>
+                                <span class="order-card-price">12.-</span>
+                            </div>
+                            <p class="order-card-desc">Douze escargots cuits dans du beurre d'ail persillé, classique français.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="escargots">−</button>
+                                    <span class="qty-display" id="qty-escargots">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="escargots">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="escargots" data-price="12">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Foie Gras Maison</span>
+                                <span class="order-card-price">21.-</span>
+                            </div>
+                            <p class="order-card-desc">Notre classique foie gras de canard maison, chutney de figue, pain toasté.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="foie_gras">−</button>
+                                    <span class="qty-display" id="qty-foie_gras">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="foie_gras">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="foie_gras" data-price="21">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Oeufs Mayonnaise</span>
+                                <span class="order-card-price">9.-</span>
+                            </div>
+                            <p class="order-card-desc">Les œufs durs traditionnels et notre mayonnaise secrète.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="oeufs_mayo">−</button>
+                                    <span class="qty-display" id="qty-oeufs_mayo">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="oeufs_mayo">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="oeufs_mayo" data-price="9">+ AJOUTER</button>
                             </div>
                         </div>
                     </div>
@@ -173,14 +349,69 @@
 
             <!-- Plats -->
             <div class="order-category">
-                <h2 data-i18n="cat_plats">Plats</h2>
+                <h2>Les Plats</h2>
                 <div class="order-grid">
+                    
+                    <div class="order-card" style="border: 2px solid #C5A880;">
+                        <span style="position:absolute; top:-12px; left:20px; background:#C5A880; color:white; font-size:0.6rem; text-transform:uppercase; padding:3px 10px; letter-spacing:1px; border-radius:2px;">Plat du jour</span>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Lieu Jaune sauce passion</span>
+                                <span class="order-card-price">24.-</span>
+                            </div>
+                            <p class="order-card-desc">Pois chiches frais, purée de choux-fleur roties, beurre de passion et émulsion yuzu.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="lieu_jaune">−</button>
+                                    <span class="qty-display" id="qty-lieu_jaune">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="lieu_jaune">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="lieu_jaune" data-price="24">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="order-card">
-                        <div class="order-card-img" style="background-image: url('img/avocado_toast_1774515001866.png');"></div>
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Entrecôte Marchand de Vin</span>
+                                <span class="order-card-price">32.-</span>
+                            </div>
+                            <p class="order-card-desc">300g, sauce vin rouge et échalotes, frites maison, os à moelle rôtis.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="entrecote">−</button>
+                                    <span class="qty-display" id="qty-entrecote">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="entrecote">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="entrecote" data-price="32">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Magret de Canard</span>
+                                <span class="order-card-price">28.-</span>
+                            </div>
+                            <p class="order-card-desc">Rôti avec sa sauce au poivre vert et gratin dauphinois aux éclats de vanille.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="magret">−</button>
+                                    <span class="qty-display" id="qty-magret">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="magret">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="magret" data-price="28">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-card">
                         <div class="order-card-content">
                             <div class="order-card-header">
                                 <span class="order-card-title">Pavé de Saumon</span>
-                                <span class="order-card-price">24€</span>
+                                <span class="order-card-price">24.-</span>
                             </div>
                             <p class="order-card-desc">Rôti sur peau, fondue de poireaux, beurre blanc citronné.</p>
                             <div class="order-card-actions">
@@ -189,26 +420,49 @@
                                     <span class="qty-display" id="qty-saumon_pave">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="saumon_pave">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="saumon_pave" data-price="24">AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="saumon_pave" data-price="24">+ AJOUTER</button>
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="order-category">
+                <h2>Les Desserts</h2>
+                <div class="order-grid">
                     <div class="order-card">
-                        <div class="order-card-img" style="background-image: url('img/cafe_lea_plat_du_jour.png');"></div>
                         <div class="order-card-content">
                             <div class="order-card-header">
-                                <span class="order-card-title">Entrecôte Marchand de Vin</span>
-                                <span class="order-card-price">36€</span>
+                                <span class="order-card-title">Crème Brûlée à la Vanille</span>
+                                <span class="order-card-price">9.-</span>
                             </div>
-                            <p class="order-card-desc">300g, sauce vin rouge et échalotes, frites maison.</p>
+                            <p class="order-card-desc">La traditionnelle, avec sa vraie croûte cassante et sa crème fondante.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
-                                    <button class="qty-btn-menu" data-action="minus" data-item="entrecote">−</button>
-                                    <span class="qty-display" id="qty-entrecote">0</span>
-                                    <button class="qty-btn-menu" data-action="plus" data-item="entrecote">+</button>
+                                    <button class="qty-btn-menu" data-action="minus" data-item="creme_brulee">−</button>
+                                    <span class="qty-display" id="qty-creme_brulee">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="creme_brulee">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="entrecote" data-price="36">AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="creme_brulee" data-price="9">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Tarte Tatin de la Mère</span>
+                                <span class="order-card-price">11.-</span>
+                            </div>
+                            <p class="order-card-desc">Pommes fondantes et très caramélisées, crème fraiche épaisse.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="tarte_tatin">−</button>
+                                    <span class="qty-display" id="qty-tarte_tatin">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="tarte_tatin">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="tarte_tatin" data-price="11">+ AJOUTER</button>
                             </div>
                         </div>
                     </div>
@@ -217,23 +471,40 @@
 
             <!-- Boissons -->
             <div class="order-category">
-                <h2 data-i18n="drinks_title">Boissons</h2>
+                <h2>Les Boissons</h2>
                 <div class="order-grid">
                     <div class="order-card">
-                        <div class="order-card-img" style="background-image: url('img/cafe_lea_boissons.png');"></div>
                         <div class="order-card-content">
                             <div class="order-card-header">
                                 <span class="order-card-title">Negroni Signature</span>
-                                <span class="order-card-price">14€</span>
+                                <span class="order-card-price">14.-</span>
                             </div>
-                            <p class="order-card-desc">Gin de caractère, Campari, Vermouth doux.</p>
+                            <p class="order-card-desc">Gin artisanal, Campari, Vermouth Rouge et tranche d'orange séchée.</p>
                             <div class="order-card-actions">
                                 <div class="qty-controls">
                                     <button class="qty-btn-menu" data-action="minus" data-item="negroni">−</button>
                                     <span class="qty-display" id="qty-negroni">0</span>
                                     <button class="qty-btn-menu" data-action="plus" data-item="negroni">+</button>
                                 </div>
-                                <button class="btn-ajouter add-to-cart" data-name="negroni" data-price="14">AJOUTER</button>
+                                <button class="btn-ajouter add-to-cart" data-name="negroni" data-price="14">+ AJOUTER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-card-content">
+                            <div class="order-card-header">
+                                <span class="order-card-title">Saint-Estèphe (Verre)</span>
+                                <span class="order-card-price">9.-</span>
+                            </div>
+                            <p class="order-card-desc">Vin rouge de Bordeaux, riche et épicé avec des tanins doux.</p>
+                            <div class="order-card-actions">
+                                <div class="qty-controls">
+                                    <button class="qty-btn-menu" data-action="minus" data-item="vin_verre">−</button>
+                                    <span class="qty-display" id="qty-vin_verre">0</span>
+                                    <button class="qty-btn-menu" data-action="plus" data-item="vin_verre">+</button>
+                                </div>
+                                <button class="btn-ajouter add-to-cart" data-name="vin_verre" data-price="9">+ AJOUTER</button>
                             </div>
                         </div>
                     </div>
@@ -252,7 +523,7 @@
             </span>
         </div>
         <!-- Link to Finalisation page -->
-        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link" data-i18n="cart_finalize">FINALISER LA COMMANDE</a>
+        <a href="finaliser-commande.html" class="btn-finaliser" id="btn-finaliser-link">FINALISER LA COMMANDE</a>
     </div>
 
     <!-- Cart Modal Overlay (used mostly on other pages, but included here for script compatibility) -->
